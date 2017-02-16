@@ -41,12 +41,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="89P-8u-sdI">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="89P-8u-sdI">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="89P-8u-sdI" firstAttribute="top" secondItem="4QL-Es-BPz" secondAttribute="bottom" id="AmX-FT-91A"/>
+                            <constraint firstItem="uRQ-hn-9Xx" firstAttribute="top" secondItem="89P-8u-sdI" secondAttribute="bottom" id="muX-w6-xwW"/>
+                            <constraint firstAttribute="trailing" secondItem="89P-8u-sdI" secondAttribute="trailing" id="rnE-ND-CdA"/>
+                            <constraint firstItem="89P-8u-sdI" firstAttribute="leading" secondItem="JHB-DA-Uqb" secondAttribute="leading" id="zfh-Aq-71q"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="Nng-rt-d9T"/>
                     <connections>
@@ -61,7 +66,7 @@
         <scene sceneID="9Sx-M9-xT0">
             <objects>
                 <navigationController id="f1r-PL-9Ww" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wo3-7u-0fT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Wo3-7u-0fT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

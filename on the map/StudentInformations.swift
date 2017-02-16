@@ -17,8 +17,8 @@ struct StudentInformations {
     let lastName: String
     let location: String
     let website: String
-    let latitude: Int
-    let longitude: Int
+    let latitude: Double
+    let longitude: Double
     
     // MARK: Initializers
     init(dictionary: [String:AnyObject]) {
@@ -28,8 +28,8 @@ struct StudentInformations {
         lastName = dictionary[ParseClient.JSONResponseKeys.LastName] as! String
         location = dictionary[ParseClient.JSONResponseKeys.Location] as! String
         website = dictionary[ParseClient.JSONResponseKeys.Website] as! String
-        latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as! Int
-        longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as! Int
+        latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as! Double
+        longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as! Double
     }
     
     static func studentInfoFromResults(_ results: [[String:AnyObject]]) -> [StudentInformations] {
