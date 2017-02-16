@@ -35,6 +35,27 @@ extension ParseClient {
     
     // MARK: POST Convenience Methods
     
-    func postStudentLocation(_ movie: StudentInformations, completionHandlerForFavorite: @escaping (_ result: Int?, _ error: NSError?) -> Void) {
-    }
+//    func postNewStudentLocation(_ studentInfo: StudentInformations, completionHandlerForFavorite: @escaping (_ result: Int?, _ error: NSError?) -> Void) {
+//        /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
+//        let methodParameters = [
+//        
+//        ]
+//        let jsonBody = "{\"\(JSONResponseKeys.UniqueKey)\": \"\(1234)\", \"\(JSONResponseKeys.FirstName)\": \"John\", \"\(JSONResponseKeys.LastName)\": \"Doe\",\"\(JSONResponseKeys.Location)\": \"Mountain View, CA\", \"\(JSONResponseKeys.Website)\": \"https://udacity.com\",\"\(JSONResponseKeys.Latitude)\": 37.386052, \"\(JSONResponseKeys.Longitude)\": -122.083851}"
+//        
+//        /* 2. Make the request */
+//        let _ = taskForPOSTMethod(parameters: methodParameters as [String:AnyObject], jsonBody: jsonBody) { (results, error) in
+//            
+//            /* 3. Send the desired value(s) to completion handler */
+//            if let error = error {
+//                completionHandlerForFavorite(nil, error)
+//            } else {
+//                if let results = results?[TMDBClient.JSONResponseKeys.StatusCode] as? Int {
+//                    completionHandlerForFavorite(results, nil)
+//                } else {
+//                    completionHandlerForFavorite(nil, NSError(domain: "postToFavoritesList parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postToFavoritesList"]))
+//                }
+//            }
+//        }
+//    }
+    
 }
