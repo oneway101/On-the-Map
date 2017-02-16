@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StudentInformation {
+struct StudentInformations {
     
     // MARK: Properties
     let objectId: String
@@ -32,13 +32,13 @@ struct StudentInformation {
         longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as! Int
     }
     
-    static func studentInfoFromResults(_ results: [[String:AnyObject]]) -> [StudentInformation] {
+    static func studentInfoFromResults(_ results: [[String:AnyObject]]) -> [StudentInformations] {
         
-        var studentInfoDictionary = [StudentInformation]()
+        var studentInfoDictionary = [StudentInformations]()
         
         // iterate through array of dictionaries, each StudentInfo is a dictionary
         for result in results {
-            studentInfoDictionary.append(StudentInformation(dictionary: result))
+            studentInfoDictionary.append(StudentInformations(dictionary: result))
         }
         
         return studentInfoDictionary

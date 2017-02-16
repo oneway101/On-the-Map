@@ -1,5 +1,5 @@
 //
-//  UdacityAuthViewController.swift
+//  LocationTableViewController.swift
 //  on-the-map
 //
 //  Created by Ha Na Gill on 2/10/17.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class UdacityAuthViewController: UIViewController{
+class LocationListViewController: UIViewController{
     
 }

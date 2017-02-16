@@ -12,12 +12,29 @@ extension ParseClient {
     
     // MARK: GET Convenience Methods
     
-    func getStudentLocation(_ completionHandlerForFavMovies: @escaping (_ result: [StudentInformation]?, _ error: NSError?) -> Void) {
-        
+    func getStudentLocation(_ completionHandlerForStudentLocation: @escaping (_ result: [StudentInformations]?, _ error: NSError?) -> Void) {
+        let methodParameters = [
+            ParameterKeys.Limit : 3
+        ]
+        /* 2. Make the request */
+        let _ = taskForGETMethod(parameters: methodParameters as [String:AnyObject]) { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandlerForStudentLocation(nil, error)
+            } else {
+                if let results = results?[JSONResponseKeys.Results] as? [[String:AnyObject]] {
+                    let studentInfo = StudentInformations.studentInfoFromResults(results)
+                    completionHandlerForStudentLocation(studentInfo, nil)
+                } else {
+                    completionHandlerForStudentLocation(nil, NSError(domain: "getStudentLocation parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getStudentLocation"]))
+                }
+            }
+        }
     }
     
     // MARK: POST Convenience Methods
     
-    func postStudentLocation(_ movie: StudentInformation, completionHandlerForFavorite: @escaping (_ result: Int?, _ error: NSError?) -> Void) {
+    func postStudentLocation(_ movie: StudentInformations, completionHandlerForFavorite: @escaping (_ result: Int?, _ error: NSError?) -> Void) {
     }
 }
