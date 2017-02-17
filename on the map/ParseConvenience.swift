@@ -16,8 +16,15 @@ extension ParseClient {
         let methodParameters = [
             ParameterKeys.Limit : 50
         ]
-        /* 2. Make the request */
-        let _ = taskForGETMethod(parameters: methodParameters as [String:AnyObject]) { (results, error) in
+        /* Make the request */
+        let urlString = Constants.StudentLocationURL + escapedParameters(methodParameters as [String:AnyObject])
+        let request = NSMutableURLRequest(url:URL(string:urlString)!)
+        
+        request.httpMethod = "GET"
+        request.addValue(parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(apiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        
+        let _ = taskForGETMethod(request as URLRequest, parameters: methodParameters as [String:AnyObject]) { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {

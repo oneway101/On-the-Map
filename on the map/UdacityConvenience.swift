@@ -19,8 +19,29 @@ extension UdacityClient{
      Step 3: Logout
      */
     
-    private func getSessionID(_ requestToken: String?, completionHandlerForSession: @escaping (_ success: Bool, _ sessionID: String?, _ errorString: String?) -> Void) {
+    func udacityLogin(username: String, password: String, completionHandlerForSession: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
-    }    
+        let methodParameters = [String:AnyObject]()
+        let urlString = Constants.SessionURL
+        let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
+        print("jsonBody-->\(jsonBody)")
+        /* Make the request */
+        let _ = taskForPOSTMethod(urlString, parameters: methodParameters as [String:AnyObject], jsonBody: jsonBody) { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                print(error)
+                completionHandlerForSession(false, "Login Failed (Session ID).")
+            } else {
+                if let sessionID = results?[JSONResponseKeys.Session] as? String {
+                    // TODO: Where to store the sessionID?
+                    completionHandlerForSession(true, nil)
+                } else {
+                    print("Could not find \(JSONResponseKeys.Session) in \(results)")
+                    completionHandlerForSession(false, "Login Failed (Session ID).")
+                }
+            }
+        }
+    }
     
 }

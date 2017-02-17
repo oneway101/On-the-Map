@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LocationMapViewController: UIViewController, MKMapViewDelegate,UINavigationControllerDelegate{
+class LocationMapViewController: UIViewController, MKMapViewDelegate,UINavigationControllerDelegate {
     
     var studentInfoArray: [StudentInformations] = [StudentInformations]()
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="f1r-PL-9Ww">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gzW-0I-Owr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -62,10 +62,81 @@
             </objects>
             <point key="canvasLocation" x="468" y="326.08695652173918"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="ufK-ij-Udu">
+            <objects>
+                <viewController id="gzW-0I-Owr" customClass="LoginViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NyL-QZ-tFv"/>
+                        <viewControllerLayoutGuide type="bottom" id="ieq-xg-44u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yap-LX-QYO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="teA-NS-AJu">
+                                <rect key="frame" x="0.0" y="40" width="375" height="607"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="worldMapImage" translatesAutoresizingMaskIntoConstraints="NO" id="OwQ-17-fWw" userLabel="World Map Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="IW9-Qs-A99"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lom-UJ-7BN" userLabel="Email">
+                                        <rect key="frame" x="0.0" y="165" width="375" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RBA-IX-Hu5" userLabel="Password Text Field">
+                                        <rect key="frame" x="0.0" y="210" width="375" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWf-jw-fTQ" userLabel="Login Button">
+                                        <rect key="frame" x="0.0" y="255" width="375" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="NJ8-VG-loD"/>
+                                        </constraints>
+                                        <state key="normal" title="LOG IN"/>
+                                        <connections>
+                                            <action selector="loginPressed:" destination="gzW-0I-Owr" eventType="touchUpInside" id="LL5-gv-u94"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmk-8u-HPm" userLabel="Debug Text Label">
+                                        <rect key="frame" x="0.0" y="314" width="375" height="293"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="teA-NS-AJu" firstAttribute="leading" secondItem="Yap-LX-QYO" secondAttribute="leading" id="NYj-4J-m5e"/>
+                            <constraint firstItem="teA-NS-AJu" firstAttribute="width" secondItem="Yap-LX-QYO" secondAttribute="width" id="e8r-GA-qVf"/>
+                            <constraint firstItem="ieq-xg-44u" firstAttribute="top" secondItem="teA-NS-AJu" secondAttribute="bottom" constant="20" id="kt6-Pu-GGr"/>
+                            <constraint firstItem="teA-NS-AJu" firstAttribute="top" secondItem="Yap-LX-QYO" secondAttribute="top" constant="40" id="sX0-72-0Dc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="debugTextLabel" destination="zmk-8u-HPm" id="hym-w5-mYJ"/>
+                        <outlet property="loginButton" destination="FWf-jw-fTQ" id="4lK-PB-D4S"/>
+                        <outlet property="passwordTextField" destination="RBA-IX-Hu5" id="jwR-AV-WIv"/>
+                        <outlet property="usernameTextField" destination="lom-UJ-7BN" id="efI-0O-6Hz"/>
+                        <outlet property="worldMapImage" destination="OwQ-17-fWw" id="ACE-Fy-pCw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QG1-uE-xds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2681" y="654"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Sx-M9-xT0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lRt-UW-JQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="f1r-PL-9Ww" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wo3-7u-0fT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -75,13 +146,14 @@
                         <segue destination="GTC-97-yPj" kind="relationship" relationship="rootViewController" id="k7B-Zk-P4k"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lRt-UW-JQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1548" y="654"/>
         </scene>
         <!--On the Map-->
         <scene sceneID="fnu-h2-bw2">
             <objects>
-                <tabBarController id="GTC-97-yPj" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="LocationMapViewController" id="GTC-97-yPj" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="enI-Lq-IP5">
                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="q2y-02-C0n"/>
                         <rightBarButtonItems>
@@ -107,5 +179,6 @@
     <resources>
         <image name="listViewIcon" width="32" height="32"/>
         <image name="mapViewIcon" width="32" height="32"/>
+        <image name="worldMapImage" width="500" height="300"/>
     </resources>
 </document>

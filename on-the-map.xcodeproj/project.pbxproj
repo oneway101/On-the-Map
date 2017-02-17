@@ -17,6 +17,7 @@
 		844F5C251E4E798D0074E2B1 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C241E4E798D0074E2B1 /* ParseClient.swift */; };
 		844F5C291E4E79B30074E2B1 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C281E4E79B30074E2B1 /* ParseConvenience.swift */; };
 		846B16861E54D919004935C9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B16851E54D919004935C9 /* GCDBlackBox.swift */; };
+		846F457F1E575FEB0050A381 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F457E1E575FEB0050A381 /* Client.swift */; };
 		847795B91E4D67DF00012584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847795B81E4D67DF00012584 /* AppDelegate.swift */; };
 		847795BE1E4D67DF00012584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847795BC1E4D67DF00012584 /* Main.storyboard */; };
 		847795C01E4D67E000012584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847795BF1E4D67E000012584 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		844F5C241E4E798D0074E2B1 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		844F5C281E4E79B30074E2B1 /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		846B16851E54D919004935C9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		846F457E1E575FEB0050A381 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		847795B51E4D67DF00012584 /* on-the-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "on-the-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		847795B81E4D67DF00012584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847795BD1E4D67DF00012584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,10 +60,11 @@
 		844F5C0D1E4E139F0074E2B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				844F5C2A1E4E79B90074E2B1 /* ParseClient */,
-				844F5C231E4E79620074E2B1 /* UdacityClient */,
+				846F457E1E575FEB0050A381 /* Client.swift */,
 				844F5C1D1E4E37390074E2B1 /* StudentInformations.swift */,
 				846B16851E54D919004935C9 /* GCDBlackBox.swift */,
+				844F5C2A1E4E79B90074E2B1 /* ParseClient */,
+				844F5C231E4E79620074E2B1 /* UdacityClient */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -69,9 +72,9 @@
 		844F5C0E1E4E13B20074E2B1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				847795CA1E4D68AA00012584 /* LoginViewController.swift */,
 				844F5C191E4E18390074E2B1 /* LocationMapViewController.swift */,
 				844F5C1B1E4E188C0074E2B1 /* LocationListViewController.swift */,
-				847795CA1E4D68AA00012584 /* LoginViewController.swift */,
 				844F5C171E4E17DB0074E2B1 /* LocationPostViewController.swift */,
 			);
 			name = Controller;
@@ -221,6 +224,7 @@
 				847795CB1E4D68AA00012584 /* LoginViewController.swift in Sources */,
 				844F5C101E4E15390074E2B1 /* MapView.swift in Sources */,
 				847795B91E4D67DF00012584 /* AppDelegate.swift in Sources */,
+				846F457F1E575FEB0050A381 /* Client.swift in Sources */,
 				844F5C181E4E17DB0074E2B1 /* LocationPostViewController.swift in Sources */,
 				844F5C1C1E4E188C0074E2B1 /* LocationListViewController.swift in Sources */,
 				844F5C291E4E79B30074E2B1 /* ParseConvenience.swift in Sources */,

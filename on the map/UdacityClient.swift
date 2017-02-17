@@ -8,15 +8,13 @@
 
 import Foundation
 
-class UdacityClient : NSObject {
+class UdacityClient: Client {
     
     // MARK: Properties
-    var session = URLSession.shared
     var sessionID: String? = nil
-    var userID: Int? = nil
     
     // MARK: Constants
-    struct Methods {
+    struct Constants {
         static let SessionURL = "https://www.udacity/api/session"
         static let UserURL = "https://www.udacity/api/user"
     }
@@ -33,19 +31,13 @@ class UdacityClient : NSObject {
         static let Account = "account"
         static let Session = "session"
     }
+    
+    // MARK: Shared Instance
+    class func sharedInstance() -> UdacityClient {
+        struct Singleton {
+            static var sharedInstance = UdacityClient()
+        }
+        return Singleton.sharedInstance
+    }
 
-    // MARK: Helpers
-//    func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
-//
-//    }
-    
-//    func taskForPOSTMethod(_ method: String, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
-//        
-//    }
-    
-    // given raw JSON, return a usable Foundation object
-//    private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
-//        
-//    }
-    
 }
