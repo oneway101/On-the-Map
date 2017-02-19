@@ -70,7 +70,7 @@ class Client: NSObject {
             func sendError(_ error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForPOST(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+                completionHandlerForPOST(nil, NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
             }
             
             /* GUARD: Was there an error? */
@@ -92,7 +92,9 @@ class Client: NSObject {
             }
             
             let range = Range(uncheckedBounds: (5, data.count - 5))
+            print("range: \(range)")
             let newData = data.subdata(in: range) /* subset response data! */
+            print("newData: \(newData)")
             
             /* Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)

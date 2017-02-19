@@ -31,7 +31,7 @@ extension UdacityClient{
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 print(error)
-                completionHandlerForSession(false, "Login Failed (Session ID).")
+                completionHandlerForSession(false, "Login Failed (Session ID)...")
             } else {
                 if let sessionID = results?[JSONResponseKeys.Session] as? String {
                     // TODO: Where to store the sessionID?
