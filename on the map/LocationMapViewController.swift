@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LocationMapViewController: UIViewController, MKMapViewDelegate,UINavigationControllerDelegate {
+class LocationMapViewController: MapTabBarController, MKMapViewDelegate {
     
     var studentInfoArray: [StudentInformations] = [StudentInformations]()
     
@@ -44,6 +44,7 @@ class LocationMapViewController: UIViewController, MKMapViewDelegate,UINavigatio
                     }
                     // When the array is complete, we add the annotations to the map.
                     self.mapView.addAnnotations(annotations)
+                    print("annotations added to the map view.")
                 }
             } else {
                 print(error)

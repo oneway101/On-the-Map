@@ -24,7 +24,6 @@ extension UdacityClient{
         let methodParameters = [String:AnyObject]()
         let urlString = Constants.SessionURL
         let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
-        print("jsonBody-->\(jsonBody)")
         /* Make the request */
         let _ = taskForPOSTMethod(urlString, parameters: methodParameters as [String:AnyObject], jsonBody: jsonBody) { (results, error) in
             

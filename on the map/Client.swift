@@ -92,9 +92,7 @@ class Client: NSObject {
             }
             
             let range = Range(uncheckedBounds: (5, data.count))
-            print("range: \(range)")
             let newData = data.subdata(in: range) /* subset response data! */
-            print("newData: \(newData)")
             
             /* Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)

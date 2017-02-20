@@ -42,8 +42,9 @@ class LoginViewController: UIViewController{
     private func completeLogin() {
         performUIUpdatesOnMain {
             self.debugTextLabel.text = ""
-            let controller = self.storyboard!.instantiateViewController(withIdentifier: "LocationMapViewController") as! LocationMapViewController
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: "MapTabBarController") as! MapTabBarController
             self.present(controller, animated: true, completion: nil)
+            //self.navigationController!.pushViewController(controller, animated: true)
         }
     }
     

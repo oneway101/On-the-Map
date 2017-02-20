@@ -18,6 +18,7 @@
 		844F5C291E4E79B30074E2B1 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C281E4E79B30074E2B1 /* ParseConvenience.swift */; };
 		846B16861E54D919004935C9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B16851E54D919004935C9 /* GCDBlackBox.swift */; };
 		846F457F1E575FEB0050A381 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F457E1E575FEB0050A381 /* Client.swift */; };
+		8477305E1E5B4995004AD68A /* MapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477305D1E5B4995004AD68A /* MapTabBarController.swift */; };
 		847795B91E4D67DF00012584 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847795B81E4D67DF00012584 /* AppDelegate.swift */; };
 		847795BE1E4D67DF00012584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847795BC1E4D67DF00012584 /* Main.storyboard */; };
 		847795C01E4D67E000012584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847795BF1E4D67E000012584 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		844F5C281E4E79B30074E2B1 /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		846B16851E54D919004935C9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		846F457E1E575FEB0050A381 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		8477305D1E5B4995004AD68A /* MapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabBarController.swift; sourceTree = "<group>"; };
 		847795B51E4D67DF00012584 /* on-the-map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "on-the-map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		847795B81E4D67DF00012584 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847795BD1E4D67DF00012584 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				847795CA1E4D68AA00012584 /* LoginViewController.swift */,
+				8477305D1E5B4995004AD68A /* MapTabBarController.swift */,
 				844F5C191E4E18390074E2B1 /* LocationMapViewController.swift */,
 				844F5C1B1E4E188C0074E2B1 /* LocationListViewController.swift */,
 				844F5C171E4E17DB0074E2B1 /* LocationPostViewController.swift */,
@@ -226,6 +229,7 @@
 				847795B91E4D67DF00012584 /* AppDelegate.swift in Sources */,
 				846F457F1E575FEB0050A381 /* Client.swift in Sources */,
 				844F5C181E4E17DB0074E2B1 /* LocationPostViewController.swift in Sources */,
+				8477305E1E5B4995004AD68A /* MapTabBarController.swift in Sources */,
 				844F5C1C1E4E188C0074E2B1 /* LocationListViewController.swift in Sources */,
 				844F5C291E4E79B30074E2B1 /* ParseConvenience.swift in Sources */,
 				844F5C1E1E4E37390074E2B1 /* StudentInformations.swift in Sources */,

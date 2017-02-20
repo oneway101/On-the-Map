@@ -8,6 +8,6 @@
 
 import UIKit
 
-class LocationListViewController: UIViewController{
+class LocationListViewController: MapTabBarController{
     
 }
