@@ -28,7 +28,7 @@ class LoginViewController: UIViewController{
                 performUIUpdatesOnMain {
                     if success{
                         self.completeLogin()
-                        print("sucessfully logged in!")
+                        print("successfully logged in!")
                     }else{
                         self.debugTextLabel.text = "Could not Log in."
                         self.displayError(errorString)

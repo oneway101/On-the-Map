@@ -11,12 +11,12 @@ import Foundation
 class UdacityClient: Client {
     
     // MARK: Properties
-    var sessionID: String? = nil
+    var accountKey: String? = nil
     
     // MARK: Constants
     struct Constants {
-        static let SessionURL = "https://www.udacity/api/session"
-        static let UserURL = "https://www.udacity/api/user"
+        static let SessionURL = "https://www.udacity.com/api/session"
+        static let UserURL = "https://www.udacity.com/api/user"
     }
     
     // MARK: Parameter Keys
@@ -30,6 +30,7 @@ class UdacityClient: Client {
     struct JSONResponseKeys {
         static let Account = "account"
         static let Session = "session"
+        static let AccountKey = "key"
     }
     
     // MARK: Shared Instance

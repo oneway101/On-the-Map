@@ -31,14 +31,17 @@ extension UdacityClient{
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 print(error)
-                completionHandlerForSession(false, "Login Failed (Session ID)...")
+                completionHandlerForSession(false, "Login Failed.")
             } else {
-                if let sessionID = results?[JSONResponseKeys.Session] as? String {
-                    // TODO: Where to store the sessionID?
-                    completionHandlerForSession(true, nil)
+                if let account = results?[JSONResponseKeys.Account] as? NSDictionary {
+                    if let accountKey = account[JSONResponseKeys.AccountKey] as? String{
+                        self.accountKey = accountKey
+                        completionHandlerForSession(true, nil)
+                    }
+                    
                 } else {
-                    print("Could not find \(JSONResponseKeys.Session) in \(results)")
-                    completionHandlerForSession(false, "Login Failed (Session ID).")
+                    print("Could not find \(JSONResponseKeys.AccountKey) in \(results)")
+                    completionHandlerForSession(false, "Login Failed. Could not find the account key.")
                 }
             }
         }

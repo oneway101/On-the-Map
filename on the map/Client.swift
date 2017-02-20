@@ -91,7 +91,7 @@ class Client: NSObject {
                 return
             }
             
-            let range = Range(uncheckedBounds: (5, data.count - 5))
+            let range = Range(uncheckedBounds: (5, data.count))
             print("range: \(range)")
             let newData = data.subdata(in: range) /* subset response data! */
             print("newData: \(newData)")
