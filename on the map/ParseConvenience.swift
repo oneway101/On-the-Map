@@ -14,7 +14,7 @@ extension ParseClient {
     
     func getStudentLocation(_ completionHandlerForStudentLocation: @escaping (_ result: [StudentInformations]?, _ error: NSError?) -> Void) {
         let methodParameters = [
-            ParameterKeys.Limit : 50
+            ParameterKeys.Limit : 10
         ]
         /* Make the request */
         let urlString = Constants.StudentLocationURL + escapedParameters(methodParameters as [String:AnyObject])
@@ -31,6 +31,7 @@ extension ParseClient {
                 completionHandlerForStudentLocation(nil, error)
             } else {
                 if let results = results?[JSONResponseKeys.Results] as? [[String:AnyObject]] {
+                    // Creates a student object array from results
                     let studentInfo = StudentInformations.studentInfoFromResults(results)
                     completionHandlerForStudentLocation(studentInfo, nil)
                 } else {

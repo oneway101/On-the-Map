@@ -106,6 +106,8 @@ class Client: NSObject {
         
     }
     
+    // MARK: Helpers
+    
     // given raw JSON, return a usable Foundation object
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
@@ -120,6 +122,7 @@ class Client: NSObject {
         completionHandlerForConvertData(parsedResult, nil)
     }
     
+    // given a dictionary of parameters, covert unsafe ASCII characters and correctly formated url string.
     func escapedParameters(_ parameters: [String:AnyObject]) -> String {
         
         if parameters.isEmpty {

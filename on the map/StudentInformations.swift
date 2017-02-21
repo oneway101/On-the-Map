@@ -11,25 +11,37 @@ import Foundation
 struct StudentInformations {
     
     // MARK: Properties
-    let objectId: String
-    let uniqueKey: String
-    let firstName: String
-    let lastName: String
-    let location: String
-    let website: String
-    let latitude: Double
-    let longitude: Double
+    //var objectId: String!
+    //var uniqueKey: String!
+    var firstName = ""
+    var lastName = ""
+    var location = ""
+    var website = ""
+    var latitude = 0.0
+    var longitude = 0.0
     
     // MARK: Initializers
     init(dictionary: [String:AnyObject]) {
-        objectId = dictionary[ParseClient.JSONResponseKeys.ObjectId] as! String
-        uniqueKey = dictionary[ParseClient.JSONResponseKeys.UniqueKey] as! String
-        firstName = dictionary[ParseClient.JSONResponseKeys.FirstName] as! String
-        lastName = dictionary[ParseClient.JSONResponseKeys.LastName] as! String
-        location = dictionary[ParseClient.JSONResponseKeys.Location] as! String
-        website = dictionary[ParseClient.JSONResponseKeys.Website] as! String
-        latitude = dictionary[ParseClient.JSONResponseKeys.Latitude] as! Double
-        longitude = dictionary[ParseClient.JSONResponseKeys.Longitude] as! Double
+        //objectId = dictionary[ParseClient.JSONResponseKeys.ObjectId] as? String
+        //uniqueKey = dictionary[ParseClient.JSONResponseKeys.UniqueKey] as? String
+        if let first = dictionary[ParseClient.JSONResponseKeys.FirstName] as? String {
+            firstName = first
+        }
+        if let last = dictionary[ParseClient.JSONResponseKeys.LastName] as? String {
+            lastName = last
+        }
+        if let mapString = dictionary[ParseClient.JSONResponseKeys.Location] as? String {
+            location = mapString
+        }
+        if let mediaURL = dictionary[ParseClient.JSONResponseKeys.Website] as? String {
+            website = mediaURL
+        }
+        if let lat = dictionary[ParseClient.JSONResponseKeys.Latitude] as? Double {
+            latitude = lat
+        }
+        if let lon = dictionary[ParseClient.JSONResponseKeys.Longitude] as? Double {
+            longitude = lon
+        }
     }
     
     static func studentInfoFromResults(_ results: [[String:AnyObject]]) -> [StudentInformations] {
