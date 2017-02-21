@@ -101,7 +101,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="mapViewIcon" id="Nng-rt-d9T"/>
                     <connections>
-                        <outlet property="mapView" destination="89P-8u-sdI" id="tdn-7W-TT4"/>
+                        <outlet property="mapView" destination="89P-8u-sdI" id="dri-g3-owT"/>
                         <outlet property="mapViewTabBarItem" destination="Nng-rt-d9T" id="Dyx-DC-dI0"/>
                     </connections>
                 </viewController>
