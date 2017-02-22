@@ -42,7 +42,7 @@ class LoginViewController: UIViewController{
     private func completeLogin() {
         performUIUpdatesOnMain {
             self.debugTextLabel.text = ""
-            let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavMainView")
+            let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapTabBarController")
             self.present(controller, animated: true, completion: nil)
             
         }

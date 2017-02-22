@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UtL-cl-HsJ" id="KLl-iB-mFi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xjA-f5-tIH">
@@ -73,12 +73,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoN-BF-QcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="498" y="1011"/>
+            <point key="canvasLocation" x="468" y="1060"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Qa2-sK-obp">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="zFg-lx-QNr" customClass="MapViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zFg-lx-QNr" customClass="MapViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4QL-Es-BPz"/>
                         <viewControllerLayoutGuide type="bottom" id="uRQ-hn-9Xx"/>
@@ -87,7 +87,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="89P-8u-sdI">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="89P-8u-sdI" userLabel="MapView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                         </subviews>
@@ -101,8 +101,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="mapViewIcon" id="Nng-rt-d9T"/>
                     <connections>
-                        <outlet property="mapView" destination="89P-8u-sdI" id="dri-g3-owT"/>
-                        <outlet property="mapViewTabBarItem" destination="Nng-rt-d9T" id="Dyx-DC-dI0"/>
+                        <outlet property="mapView" destination="89P-8u-sdI" id="78M-7X-TdN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Tf-8q-8rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +187,6 @@
         <!--Navigation Controller-->
         <scene sceneID="9Sx-M9-xT0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lRt-UW-JQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="NavMainView" id="f1r-PL-9Ww" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wo3-7u-0fT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -198,6 +196,7 @@
                         <segue destination="GTC-97-yPj" kind="relationship" relationship="rootViewController" id="k7B-Zk-P4k"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lRt-UW-JQw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1305" y="654"/>
         </scene>
@@ -221,8 +220,8 @@
                         <outlet property="addLocation" destination="yqz-uD-sDq" id="kg7-Lg-nG5"/>
                         <outlet property="logoutButton" destination="q2y-02-C0n" id="nMD-yx-6tp"/>
                         <outlet property="refreshMap" destination="MFL-ao-hDc" id="mBg-sT-gvc"/>
-                        <segue destination="zFg-lx-QNr" kind="relationship" relationship="viewControllers" id="ljA-MI-fb6"/>
-                        <segue destination="ZOW-pJ-nYQ" kind="relationship" relationship="viewControllers" id="Rgw-tP-GZd"/>
+                        <segue destination="zFg-lx-QNr" kind="relationship" relationship="viewControllers" id="ElQ-XJ-Uzw"/>
+                        <segue destination="ZOW-pJ-nYQ" kind="relationship" relationship="viewControllers" id="tyr-hc-Xq0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1V-Ls-QQd" userLabel="First Responder" sceneMemberID="firstResponder"/>

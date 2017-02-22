@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: MapTabBarController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     var studentInfoDictionary = [StudentInformations]()
     
@@ -25,7 +25,7 @@ class MapViewController: MapTabBarController, MKMapViewDelegate {
     
     private func getStudentInfo(){
         ParseClient.sharedInstance().getStudentLocation { (studentInfo, error) in
-            // Q: Should I use `if let studentInfo = studentInfo as? [String: AnyObject]`
+            // Q: Should I use `if let studentInfo = studentInfo as? [[String: AnyObject]]`
             if let studentInfo = studentInfo {
                 self.studentInfoDictionary = studentInfo
                 self.populateMapView()
@@ -36,8 +36,6 @@ class MapViewController: MapTabBarController, MKMapViewDelegate {
     }
 
     func populateMapView(){
-        print("*** popuateMapView ***")
-        print(self.studentInfoDictionary)
         var annotations = [MKPointAnnotation]()
         for student in self.studentInfoDictionary {
             let lat = CLLocationDegrees(student.latitude)
@@ -55,14 +53,10 @@ class MapViewController: MapTabBarController, MKMapViewDelegate {
             annotations.append(annotation)
             
         }
-        print("*** annotations ***")
-        print(annotations)
         // Q: perfromUIUpdatesOnMain - shoud it include annotaions?
         performUIUpdatesOnMain {
             // When the array is complete, we add the annotations to the map.
-            //let mapView = self.mapView.addAnnotations(annotations)
-            print("*** mapView ***")
-            //print(mapView)
+            self.mapView.addAnnotations(annotations)
             print("annotations added to the map view.")
         }
     }

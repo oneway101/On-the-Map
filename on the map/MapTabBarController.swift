@@ -13,8 +13,6 @@ class MapTabBarController: UITabBarController, UINavigationControllerDelegate {
     @IBOutlet weak var refreshMap: UIBarButtonItem!
     @IBOutlet weak var addLocation: UIBarButtonItem!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
-    @IBOutlet weak var mapViewTabBarItem: UITabBarItem!
-    @IBOutlet weak var listViewTabBarIem: UITabBarItem!
     
     
     override func viewDidLoad() {
