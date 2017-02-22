@@ -25,14 +25,14 @@ class MapViewController: MapTabBarController, MKMapViewDelegate {
     
     private func getStudentInfo(){
         ParseClient.sharedInstance().getStudentLocation { (studentInfo, error) in
-            if let studentInfo = studentInfo{
+            // Q: Should I use `if let studentInfo = studentInfo as? [String: AnyObject]`
+            if let studentInfo = studentInfo {
                 self.studentInfoDictionary = studentInfo
                 self.populateMapView()
             }else{
                 print(error)
             }
         }
-        
     }
 
     func populateMapView(){
@@ -60,9 +60,9 @@ class MapViewController: MapTabBarController, MKMapViewDelegate {
         // Q: perfromUIUpdatesOnMain - shoud it include annotaions?
         performUIUpdatesOnMain {
             // When the array is complete, we add the annotations to the map.
-            let mapView = self.mapView?.addAnnotations(annotations)
+            //let mapView = self.mapView.addAnnotations(annotations)
             print("*** mapView ***")
-            print(mapView)
+            //print(mapView)
             print("annotations added to the map view.")
         }
     }

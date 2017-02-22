@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="20" reuseIdentifier="cellID" id="UtL-cl-HsJ" customClass="MapTableViewCell" customModule="on_the_map" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="20" reuseIdentifier="locationCell" id="UtL-cl-HsJ" customClass="MapTableViewCell" customModule="on_the_map" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UtL-cl-HsJ" id="KLl-iB-mFi">
@@ -73,7 +73,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoN-BF-QcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="468" y="1033.1334332833585"/>
+            <point key="canvasLocation" x="498" y="1011"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Qa2-sK-obp">
