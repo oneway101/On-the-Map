@@ -27,7 +27,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ParseClient.sharedInstance().getStudentLocation { (studentInfo, error) in
             // Q: Should I use `if let studentInfo = studentInfo as? [[String: AnyObject]]`
             if let studentInfo = studentInfo {
-                self.studentInfoDictionary = studentInfo
+                StudentDataModel.studentLocations = studentInfo
                 self.populateMapView()
             }else{
                 print(error)
@@ -37,7 +37,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     func populateMapView(){
         var annotations = [MKPointAnnotation]()
-        for student in self.studentInfoDictionary {
+        for student in StudentDataModel.studentLocations {
             let lat = CLLocationDegrees(student.latitude)
             let long = CLLocationDegrees(student.longitude)
             

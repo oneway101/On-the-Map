@@ -24,31 +24,34 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UtL-cl-HsJ" id="KLl-iB-mFi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xjA-f5-tIH">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="xjA-f5-tIH">
                                             <rect key="frame" x="0.0" y="-1" width="44" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="cAg-2E-hLI"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVP-I0-5H6">
-                                            <rect key="frame" x="52" y="3" width="45" height="21"/>
+                                            <rect key="frame" x="52" y="3" width="315" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nw-5z-qMp">
-                                            <rect key="frame" x="52" y="26" width="62" height="14.5"/>
+                                            <rect key="frame" x="52" y="26" width="315" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="LVP-I0-5H6" secondAttribute="trailing" constant="270" id="4xk-6Y-c8q"/>
                                         <constraint firstItem="LVP-I0-5H6" firstAttribute="leading" secondItem="xjA-f5-tIH" secondAttribute="trailing" constant="8" id="IV4-ce-m2y"/>
                                         <constraint firstItem="6nw-5z-qMp" firstAttribute="leading" secondItem="xjA-f5-tIH" secondAttribute="trailing" constant="8" id="R9v-cv-g48"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="6nw-5z-qMp" secondAttribute="trailing" constant="253" id="f8I-iZ-E0f"/>
+                                        <constraint firstItem="LVP-I0-5H6" firstAttribute="trailing" secondItem="6nw-5z-qMp" secondAttribute="trailing" id="TJR-vW-Rdz"/>
                                         <constraint firstItem="LVP-I0-5H6" firstAttribute="top" secondItem="xjA-f5-tIH" secondAttribute="top" constant="4" id="kub-3m-ubQ"/>
+                                        <constraint firstItem="LVP-I0-5H6" firstAttribute="trailing" secondItem="KLl-iB-mFi" secondAttribute="trailingMargin" id="nsZ-Ou-xnN"/>
                                         <constraint firstItem="6nw-5z-qMp" firstAttribute="top" secondItem="LVP-I0-5H6" secondAttribute="bottom" constant="2" id="ru1-5R-DPM"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -73,7 +76,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoN-BF-QcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="468" y="1060"/>
+            <point key="canvasLocation" x="468" y="1059.2203898050975"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="Qa2-sK-obp">
@@ -232,6 +235,7 @@
     <resources>
         <image name="listViewIcon" width="32" height="32"/>
         <image name="mapViewIcon" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
         <image name="worldMapImage" width="500" height="300"/>
     </resources>
 </document>

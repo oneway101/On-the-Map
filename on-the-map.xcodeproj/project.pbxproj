@@ -15,6 +15,7 @@
 		844F5C221E4E483A0074E2B1 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C211E4E483A0074E2B1 /* UdacityConvenience.swift */; };
 		844F5C251E4E798D0074E2B1 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C241E4E798D0074E2B1 /* ParseClient.swift */; };
 		844F5C291E4E79B30074E2B1 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C281E4E79B30074E2B1 /* ParseConvenience.swift */; };
+		8459B25C1E5E095D00C219F5 /* StudentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459B25B1E5E095D00C219F5 /* StudentDataModel.swift */; };
 		846B16861E54D919004935C9 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B16851E54D919004935C9 /* GCDBlackBox.swift */; };
 		846F457F1E575FEB0050A381 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F457E1E575FEB0050A381 /* Client.swift */; };
 		8477305E1E5B4995004AD68A /* MapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8477305D1E5B4995004AD68A /* MapTabBarController.swift */; };
@@ -36,6 +37,7 @@
 		844F5C211E4E483A0074E2B1 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		844F5C241E4E798D0074E2B1 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ParseClient.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		844F5C281E4E79B30074E2B1 /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ParseConvenience.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8459B25B1E5E095D00C219F5 /* StudentDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDataModel.swift; sourceTree = "<group>"; };
 		846B16851E54D919004935C9 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		846F457E1E575FEB0050A381 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		8477305D1E5B4995004AD68A /* MapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTabBarController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				846F457E1E575FEB0050A381 /* Client.swift */,
 				844F5C1D1E4E37390074E2B1 /* StudentInformations.swift */,
 				846B16851E54D919004935C9 /* GCDBlackBox.swift */,
+				8459B25B1E5E095D00C219F5 /* StudentDataModel.swift */,
 				844F5C2A1E4E79B90074E2B1 /* ParseClient */,
 				844F5C231E4E79620074E2B1 /* UdacityClient */,
 			);
@@ -237,6 +240,7 @@
 				844F5C291E4E79B30074E2B1 /* ParseConvenience.swift in Sources */,
 				847730621E5BA60A004AD68A /* MapTableViewCell.swift in Sources */,
 				844F5C1E1E4E37390074E2B1 /* StudentInformations.swift in Sources */,
+				8459B25C1E5E095D00C219F5 /* StudentDataModel.swift in Sources */,
 				844F5C1A1E4E18390074E2B1 /* MapViewController.swift in Sources */,
 				844F5C251E4E798D0074E2B1 /* ParseClient.swift in Sources */,
 			);
