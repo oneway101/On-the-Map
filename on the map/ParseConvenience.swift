@@ -48,7 +48,12 @@ extension ParseClient {
 //        let methodParameters = [
 //        
 //        ]
-//        let jsonBody = "{\"\(JSONResponseKeys.UniqueKey)\": \"\(1234)\", \"\(JSONResponseKeys.FirstName)\": \"John\", \"\(JSONResponseKeys.LastName)\": \"Doe\",\"\(JSONResponseKeys.Location)\": \"Mountain View, CA\", \"\(JSONResponseKeys.Website)\": \"https://udacity.com\",\"\(JSONResponseKeys.Latitude)\": 37.386052, \"\(JSONResponseKeys.Longitude)\": -122.083851}"
+//        let jsonBodyy = "{\"\(JSONResponseKeys.UniqueKey)\": \"\(1234)\", \"\(JSONResponseKeys.FirstName)\": \"John\", \"\(JSONResponseKeys.LastName)\": \"Doe\",\"\(JSONResponseKeys.Location)\": \"Mountain View, CA\", \"\(JSONResponseKeys.Website)\": \"https://udacity.com\",\"\(JSONResponseKeys.Latitude)\": 37.386052, \"\(JSONResponseKeys.Longitude)\": -122.083851}"
+//        let jsonBody = [
+//            JSONResponseKeys.UniqueKey:1234,
+//            JSONResponseKeys.FirstName:
+//                        
+//        ]
 //        
 //        /* 2. Make the request */
 //        let _ = taskForPOSTMethod(parameters: methodParameters as [String:AnyObject], jsonBody: jsonBody) { (results, error) in

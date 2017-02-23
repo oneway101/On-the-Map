@@ -30,7 +30,7 @@ extension UdacityClient{
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 print(error)
-                completionHandlerForSession(false, "Login Failed.")
+                completionHandlerForSession(false, "There was an error loggin in.")
             } else {
                 if let account = results?[JSONResponseKeys.Account] as? NSDictionary {
                     if let accountKey = account[JSONResponseKeys.AccountKey] as? String{
@@ -40,7 +40,7 @@ extension UdacityClient{
                     
                 } else {
                     print("Could not find \(JSONResponseKeys.AccountKey) in \(results)")
-                    completionHandlerForSession(false, "Login Failed. Could not find the account key.")
+                    completionHandlerForSession(false, "Could not find the account key.")
                 }
             }
         }

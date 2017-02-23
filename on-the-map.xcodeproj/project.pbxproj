@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		844F5C101E4E15390074E2B1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C0F1E4E15390074E2B1 /* MapView.swift */; };
+		844F5C101E4E15390074E2B1 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C0F1E4E15390074E2B1 /* CustomUI.swift */; };
 		844F5C141E4E16360074E2B1 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C131E4E16360074E2B1 /* UdacityClient.swift */; };
-		844F5C181E4E17DB0074E2B1 /* LocationPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C171E4E17DB0074E2B1 /* LocationPostViewController.swift */; };
+		844F5C181E4E17DB0074E2B1 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C171E4E17DB0074E2B1 /* AddLocationViewController.swift */; };
 		844F5C1A1E4E18390074E2B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C191E4E18390074E2B1 /* MapViewController.swift */; };
 		844F5C1E1E4E37390074E2B1 /* StudentInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C1D1E4E37390074E2B1 /* StudentInformations.swift */; };
 		844F5C221E4E483A0074E2B1 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F5C211E4E483A0074E2B1 /* UdacityConvenience.swift */; };
@@ -29,9 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		844F5C0F1E4E15390074E2B1 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		844F5C0F1E4E15390074E2B1 /* CustomUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
 		844F5C131E4E16360074E2B1 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
-		844F5C171E4E17DB0074E2B1 /* LocationPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPostViewController.swift; sourceTree = "<group>"; };
+		844F5C171E4E17DB0074E2B1 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		844F5C191E4E18390074E2B1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MapViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		844F5C1D1E4E37390074E2B1 /* StudentInformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StudentInformations.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		844F5C211E4E483A0074E2B1 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 				844F5C191E4E18390074E2B1 /* MapViewController.swift */,
 				8477305F1E5B908B004AD68A /* MapTableViewController.swift */,
 				847730611E5BA60A004AD68A /* MapTableViewCell.swift */,
-				844F5C171E4E17DB0074E2B1 /* LocationPostViewController.swift */,
+				844F5C171E4E17DB0074E2B1 /* AddLocationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -92,7 +92,7 @@
 		844F5C111E4E153F0074E2B1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				844F5C0F1E4E15390074E2B1 /* MapView.swift */,
+				844F5C0F1E4E15390074E2B1 /* CustomUI.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -232,10 +232,10 @@
 				847730601E5B908B004AD68A /* MapTableViewController.swift in Sources */,
 				844F5C141E4E16360074E2B1 /* UdacityClient.swift in Sources */,
 				847795CB1E4D68AA00012584 /* LoginViewController.swift in Sources */,
-				844F5C101E4E15390074E2B1 /* MapView.swift in Sources */,
+				844F5C101E4E15390074E2B1 /* CustomUI.swift in Sources */,
 				847795B91E4D67DF00012584 /* AppDelegate.swift in Sources */,
 				846F457F1E575FEB0050A381 /* Client.swift in Sources */,
-				844F5C181E4E17DB0074E2B1 /* LocationPostViewController.swift in Sources */,
+				844F5C181E4E17DB0074E2B1 /* AddLocationViewController.swift in Sources */,
 				8477305E1E5B4995004AD68A /* MapTabBarController.swift in Sources */,
 				844F5C291E4E79B30074E2B1 /* ParseConvenience.swift in Sources */,
 				847730621E5BA60A004AD68A /* MapTableViewCell.swift in Sources */,

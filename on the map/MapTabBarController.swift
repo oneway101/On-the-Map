@@ -9,11 +9,6 @@
 import UIKit
 
 class MapTabBarController: UITabBarController, UINavigationControllerDelegate {
-
-    @IBOutlet weak var refreshMap: UIBarButtonItem!
-    @IBOutlet weak var addLocation: UIBarButtonItem!
-    @IBOutlet weak var logoutButton: UIBarButtonItem!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +22,8 @@ class MapTabBarController: UITabBarController, UINavigationControllerDelegate {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func addLocation(_ sender: Any) {
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddLocation")
+        self.present(controller, animated: true, completion: nil)
     }
-    */
-
 }
