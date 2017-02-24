@@ -16,12 +16,16 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var loginButton: CustomButton!
     @IBOutlet weak var debugTextLabel: UILabel!
     
+    override func viewDidLoad() {
+        
+    }
+    
     // MARK: Login
     
     @IBAction func loginPressed(_ sender: AnyObject) {
         
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            self.displayError("Username or Password is empty")
+            self.displayAlert("Username or Password is empty")
         } else {
             UdacityClient.sharedInstance().udacityLogin(username: usernameTextField.text!, password: passwordTextField.text!, completionHandlerForSession: { (success, errorString) in
                 
@@ -30,10 +34,10 @@ class LoginViewController: UIViewController{
                         self.completeLogin()
                         print("successfully logged in!")
                     }else if errorString != nil {
-                        self.displayError(errorString)
+                        self.displayAlert(errorString)
                     }
                     else{
-                        self.displayError("Invalid Username or Password")
+                        self.displayAlert("Invalid Username or Password")
                     }
                 }
                 
@@ -49,7 +53,7 @@ class LoginViewController: UIViewController{
         }
     }
     
-    func displayError(_ errorString: String?) {
+    func displayAlert(_ errorString: String?) {
         if let errorString = errorString {
             let alert = UIAlertController(title: "Login Failed", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
