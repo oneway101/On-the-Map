@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="20W-XM-eRA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gzW-0I-Owr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -218,7 +218,7 @@
                             <barButtonItem systemItem="add" id="yqz-uD-sDq">
                                 <connections>
                                     <action selector="addLocation:" destination="GTC-97-yPj" id="phW-WS-Pja"/>
-                                    <segue destination="20W-XM-eRA" kind="show" id="FsI-a0-1Sn"/>
+                                    <segue destination="20W-XM-eRA" kind="show" identifier="addLocation" id="FsI-a0-1Sn"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="MFL-ao-hDc"/>
@@ -238,10 +238,10 @@
             </objects>
             <point key="canvasLocation" x="-479" y="654"/>
         </scene>
-        <!--Add Location View Controller-->
+        <!--Add Location-->
         <scene sceneID="4zB-v5-f6G">
             <objects>
-                <viewController storyboardIdentifier="AddLocation" id="20W-XM-eRA" customClass="AddLocationViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocation" title="Add Location" id="20W-XM-eRA" customClass="AddLocationViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e0D-LA-4bY"/>
                         <viewControllerLayoutGuide type="bottom" id="Aj4-ao-VbW"/>
@@ -259,7 +259,7 @@
                                             <constraint firstAttribute="height" constant="100" id="sEw-Wk-L1G"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-sb-MM6" userLabel="EnterLocation">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New York" borderStyle="roundedRect" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-sb-MM6" userLabel="EnterLocation">
                                         <rect key="frame" x="0.0" y="112" width="275" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="pwC-ww-bEc"/>
@@ -268,7 +268,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Av-RC-xd0" userLabel="EnterWebsite">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.udacity.com" borderStyle="roundedRect" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Av-RC-xd0" userLabel="EnterWebsite">
                                         <rect key="frame" x="0.0" y="169" width="275" height="45"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -282,6 +282,7 @@
                                         </state>
                                         <connections>
                                             <action selector="findLocation:" destination="20W-XM-eRA" eventType="touchUpInside" id="Exs-z4-Sns"/>
+                                            <segue destination="hgD-Vb-OF7" kind="show" identifier="submitLocation" id="hr0-dl-dOI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -309,6 +310,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w58-UI-XUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-479" y="1463"/>
+        </scene>
+        <!--Add Location View Controller-->
+        <scene sceneID="dqT-sJ-Ei4">
+            <objects>
+                <viewController storyboardIdentifier="submitLocationView" id="hgD-Vb-OF7" customClass="AddLocationViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Wg-HV-phn"/>
+                        <viewControllerLayoutGuide type="bottom" id="lCB-Ac-yJT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z1q-md-QI8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8Tg-hv-ydY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZI-GM-mXa" userLabel="submitButton">
+                                <rect key="frame" x="50" y="553" width="275" height="45"/>
+                                <color key="backgroundColor" red="0.2586861849" green="0.45479494329999998" blue="0.72701489929999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="7am-jF-JO2"/>
+                                    <constraint firstAttribute="width" constant="275" id="gPr-67-KJo"/>
+                                </constraints>
+                                <state key="normal" title="SUBMIT LOCATION">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitLocation:" destination="hgD-Vb-OF7" eventType="touchUpInside" id="mNO-XQ-dCu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Tg-hv-ydY" firstAttribute="leading" secondItem="z1q-md-QI8" secondAttribute="leading" id="DfF-eP-9EF"/>
+                            <constraint firstItem="8Tg-hv-ydY" firstAttribute="top" secondItem="z1q-md-QI8" secondAttribute="top" id="Vdg-vw-FPl"/>
+                            <constraint firstItem="9ZI-GM-mXa" firstAttribute="centerX" secondItem="z1q-md-QI8" secondAttribute="centerX" id="d54-r4-s4j"/>
+                            <constraint firstItem="8Tg-hv-ydY" firstAttribute="width" secondItem="z1q-md-QI8" secondAttribute="width" id="fmu-bU-2wI"/>
+                            <constraint firstItem="lCB-Ac-yJT" firstAttribute="top" secondItem="9ZI-GM-mXa" secondAttribute="bottom" constant="20" id="iIP-Hl-ddb"/>
+                            <constraint firstItem="8Tg-hv-ydY" firstAttribute="height" secondItem="z1q-md-QI8" secondAttribute="height" id="kfe-2A-6LY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="8Tg-hv-ydY" id="oaN-1j-qXl"/>
+                        <outlet property="submitButton" destination="9ZI-GM-mXa" id="ddW-vZ-pxN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-t9-lfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-479.19999999999999" y="2256.521739130435"/>
         </scene>
     </scenes>
     <resources>

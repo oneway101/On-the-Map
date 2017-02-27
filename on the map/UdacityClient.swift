@@ -11,7 +11,7 @@ import Foundation
 class UdacityClient: Client {
     
     // MARK: Properties
-    var accountKey: String? = nil
+    static var accountKey: String? = nil
     
     // MARK: Constants
     struct Constants {

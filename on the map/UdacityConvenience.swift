@@ -21,11 +21,15 @@ extension UdacityClient{
     
     func udacityLogin(username: String, password: String, completionHandlerForSession: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
-        let methodParameters = [String:AnyObject]()
+        //let methodParameters = [String:AnyObject]()
         let urlString = Constants.SessionURL
+        let headerFields = [
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
         let jsonBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         /* Make the request */
-        let _ = taskForPOSTMethod(urlString, parameters: methodParameters as [String:AnyObject], jsonBody: jsonBody) { (results, error) in
+        let _ = taskForPOSTMethod(urlString: urlString, headerFields: headerFields, jsonBody: jsonBody) { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
@@ -34,7 +38,7 @@ extension UdacityClient{
             } else {
                 if let account = results?[JSONResponseKeys.Account] as? NSDictionary {
                     if let accountKey = account[JSONResponseKeys.AccountKey] as? String{
-                        self.accountKey = accountKey
+                        StudentDataModel.accountKey = accountKey
                         completionHandlerForSession(true, nil)
                     }
                     

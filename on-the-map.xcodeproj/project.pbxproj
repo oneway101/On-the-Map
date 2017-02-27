@@ -67,9 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				846F457E1E575FEB0050A381 /* Client.swift */,
+				8459B25B1E5E095D00C219F5 /* StudentDataModel.swift */,
 				844F5C1D1E4E37390074E2B1 /* StudentInformations.swift */,
 				846B16851E54D919004935C9 /* GCDBlackBox.swift */,
-				8459B25B1E5E095D00C219F5 /* StudentDataModel.swift */,
 				844F5C2A1E4E79B90074E2B1 /* ParseClient */,
 				844F5C231E4E79620074E2B1 /* UdacityClient */,
 			);

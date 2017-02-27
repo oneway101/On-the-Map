@@ -17,10 +17,20 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate{
     @IBOutlet weak var enterLocation: UITextField!
     @IBOutlet weak var enterWebsite: UITextField!
     @IBOutlet weak var findLocation: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var submitButton: UIButton!
     
     // MARK: Properties
     var address = ""
     var website = ""
+    //var mapString = ""
+    //var lat = 0.0
+    //var lon = 0.0
+    
+    override func viewDidLoad() {
+        //enterLocation.text = "New York"
+        //enterWebsite.text = "http://www.udacity.com"
+    }
     
     //Found location button
     @IBAction func findLocation(_ sender: Any) {
@@ -33,6 +43,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate{
             website = enterWebsite.text!
             forwardGeocoding(address)
         }
+        presentSubmitLocationView()
     }
     
     // Geocode Address String
@@ -55,7 +66,12 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate{
             if let location = placemark.location {
                 let coordinate = location.coordinate
                 print("*** coordinate ***")
-                print("latitude:\(coordinate.latitude) longitude:\(coordinate.longitude)")
+                print(placemark)
+                StudentDataModel.latitude = coordinate.latitude
+                StudentDataModel.longitude = coordinate.longitude
+                StudentDataModel.mapString = ("\(placemark.locality),\(placemark.administrativeArea)")
+                self.populateMapView()
+                
             } else {
                 displayAlert("No Matching Location Found")
             }
@@ -63,12 +79,52 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate{
         
     }
     
-    func displayAlert(_ errorString: String?) {
+    private func displayAlert(_ errorString: String?) {
         if let errorString = errorString {
             let alert = UIAlertController(title: "Location Not Found", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    private func presentSubmitLocationView(){
+        performSegue(withIdentifier: "submitLocation", sender: self)
+        //populateMapView()
+    }
+    
+    private func populateMapView(){
+        var annotations = [MKPointAnnotation]()
+            let lat = CLLocationDegrees(StudentDataModel.latitude)
+            let lon = CLLocationDegrees(StudentDataModel.longitude)
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(StudentDataModel.firstName) \(StudentDataModel.lastName)"
+            annotation.subtitle = website
+            annotations.append(annotation)
+        print("*** annotations ***")
+        print(annotations)
+
+        performUIUpdatesOnMain {
+            self.mapView.addAnnotations(annotations)
+            print("new location added to the map view.")
+        }
+    }
+
+    
+    @IBAction func submitLocation(_ sender: Any) {
+        ParseClient.sharedInstance().postNewLocation { (results, error) in
+            if error != nil {
+                print("*** submit error ***")
+                print(error)
+            } else {
+                print("*** objectId ***")
+                print(results)
+            }
+        }
+
+    }
+
+    
     
 }

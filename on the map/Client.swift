@@ -53,15 +53,17 @@ class Client: NSObject {
     }
     
     // MARK: POST Method
-    func taskForPOSTMethod(_ urlString: String, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForPOSTMethod(urlString: String, headerFields:[String:String], jsonBody: String, completionHandlerForPOST: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
 
         /* Build the URL, Configure the request */
-        let urlString = urlString + escapedParameters(parameters as [String:AnyObject])
+        let urlString = urlString
         let request = NSMutableURLRequest(url:URL(string:urlString)!)
-        
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        for (field, value) in headerFields {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
+        
         request.httpBody = jsonBody.data(using: String.Encoding.utf8)
         
         /* Make the request */
@@ -91,12 +93,15 @@ class Client: NSObject {
                 return
             }
             
-            let range = Range(uncheckedBounds: (5, data.count))
-            let newData = data.subdata(in: range) /* subset response data! */
+            if urlString == UdacityClient.Constants.SessionURL {
+                let range = Range(uncheckedBounds: (5, data.count))
+                let newData = data.subdata(in: range) /* subset response data! */
+                /* Parse the data and use the data (happens in completion handler) */
+                self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)
+            } else {
+                self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            }
             
-            /* Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)
-
         }
         
         /* Start the request */
