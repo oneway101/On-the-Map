@@ -10,14 +10,14 @@ import Foundation
 
 class StudentDataModel {
     
+    static var objectId: String = ""
     static var accountKey: String = ""
-    static var firstName: String = ""
-    static var lastName: String = ""
-    static var mapString: String = ""
+    static var firstName: String = "Hello"
+    static var lastName: String = "Kitty"
+    static var mapString: String = "New York, NY"
     static var website: String = ""
     static var latitude: Double = 0.0
     static var longitude: Double = 0.0
-
     
     static var studentLocations = [StudentInformations]()
 

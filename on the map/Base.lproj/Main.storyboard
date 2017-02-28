@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UtL-cl-HsJ" id="KLl-iB-mFi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="xjA-f5-tIH">
@@ -259,7 +259,7 @@
                                             <constraint firstAttribute="height" constant="100" id="sEw-Wk-L1G"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New York" borderStyle="roundedRect" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-sb-MM6" userLabel="EnterLocation">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EaL-sb-MM6" userLabel="EnterLocation">
                                         <rect key="frame" x="0.0" y="112" width="275" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="pwC-ww-bEc"/>
@@ -268,7 +268,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.udacity.com" borderStyle="roundedRect" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Av-RC-xd0" userLabel="EnterWebsite">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Av-RC-xd0" userLabel="EnterWebsite">
                                         <rect key="frame" x="0.0" y="169" width="275" height="45"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -282,7 +282,6 @@
                                         </state>
                                         <connections>
                                             <action selector="findLocation:" destination="20W-XM-eRA" eventType="touchUpInside" id="Exs-z4-Sns"/>
-                                            <segue destination="hgD-Vb-OF7" kind="show" identifier="submitLocation" id="hr0-dl-dOI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -311,10 +310,10 @@
             </objects>
             <point key="canvasLocation" x="-479" y="1463"/>
         </scene>
-        <!--Add Location View Controller-->
+        <!--Submit Location View Controller-->
         <scene sceneID="dqT-sJ-Ei4">
             <objects>
-                <viewController storyboardIdentifier="submitLocationView" id="hgD-Vb-OF7" customClass="AddLocationViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="submitLocationView" id="hgD-Vb-OF7" customClass="submitLocationViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Wg-HV-phn"/>
                         <viewControllerLayoutGuide type="bottom" id="lCB-Ac-yJT"/>
@@ -337,7 +336,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="submitLocation:" destination="hgD-Vb-OF7" eventType="touchUpInside" id="mNO-XQ-dCu"/>
+                                    <action selector="submitLocation:" destination="hgD-Vb-OF7" eventType="touchUpInside" id="gPk-yk-8Lt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -352,13 +351,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="8Tg-hv-ydY" id="oaN-1j-qXl"/>
-                        <outlet property="submitButton" destination="9ZI-GM-mXa" id="ddW-vZ-pxN"/>
+                        <outlet property="mapView" destination="8Tg-hv-ydY" id="cPE-Fm-sdD"/>
+                        <outlet property="submitButton" destination="9ZI-GM-mXa" id="eHz-D3-0NA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-t9-lfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-479.19999999999999" y="2256.521739130435"/>
+            <point key="canvasLocation" x="-479" y="2185"/>
         </scene>
     </scenes>
     <resources>

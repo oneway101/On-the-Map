@@ -7,29 +7,23 @@
 //
 
 import UIKit
-import MapKit
 import CoreLocation
 import AddressBookUI
 
 
-class AddLocationViewController: UIViewController, MKMapViewDelegate{
+class AddLocationViewController: UIViewController {
     
     @IBOutlet weak var enterLocation: UITextField!
     @IBOutlet weak var enterWebsite: UITextField!
     @IBOutlet weak var findLocation: UIButton!
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var submitButton: UIButton!
     
     // MARK: Properties
     var address = ""
     var website = ""
-    //var mapString = ""
-    //var lat = 0.0
-    //var lon = 0.0
     
     override func viewDidLoad() {
-        //enterLocation.text = "New York"
-        //enterWebsite.text = "http://www.udacity.com"
+        enterLocation.text = "New York"
+        enterWebsite.text = "http://www.udacity.com"
     }
     
     //Found location button
@@ -40,10 +34,9 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate{
             self.displayAlert("Must Enter a Website")
         }else{
             address = enterLocation.text!
-            website = enterWebsite.text!
+            StudentDataModel.website = enterWebsite.text!
             forwardGeocoding(address)
         }
-        presentSubmitLocationView()
     }
     
     // Geocode Address String
@@ -67,11 +60,11 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate{
                 let coordinate = location.coordinate
                 print("*** coordinate ***")
                 print(placemark)
+                
                 StudentDataModel.latitude = coordinate.latitude
                 StudentDataModel.longitude = coordinate.longitude
-                StudentDataModel.mapString = ("\(placemark.locality),\(placemark.administrativeArea)")
-                self.populateMapView()
-                
+                //StudentDataModel.mapString = ("\(placemark.locality!),\(placemark.administrativeArea!)")
+                presentSubmitLocationView()
             } else {
                 displayAlert("No Matching Location Found")
             }
@@ -88,43 +81,9 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate{
     }
     
     private func presentSubmitLocationView(){
-        performSegue(withIdentifier: "submitLocation", sender: self)
-        //populateMapView()
+        //performSegue(withIdentifier: "submitLocation", sender: self)
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "submitLocationView")
+        self.present(controller, animated: true, completion: nil)
     }
-    
-    private func populateMapView(){
-        var annotations = [MKPointAnnotation]()
-            let lat = CLLocationDegrees(StudentDataModel.latitude)
-            let lon = CLLocationDegrees(StudentDataModel.longitude)
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(StudentDataModel.firstName) \(StudentDataModel.lastName)"
-            annotation.subtitle = website
-            annotations.append(annotation)
-        print("*** annotations ***")
-        print(annotations)
-
-        performUIUpdatesOnMain {
-            self.mapView.addAnnotations(annotations)
-            print("new location added to the map view.")
-        }
-    }
-
-    
-    @IBAction func submitLocation(_ sender: Any) {
-        ParseClient.sharedInstance().postNewLocation { (results, error) in
-            if error != nil {
-                print("*** submit error ***")
-                print(error)
-            } else {
-                print("*** objectId ***")
-                print(results)
-            }
-        }
-
-    }
-
-    
     
 }

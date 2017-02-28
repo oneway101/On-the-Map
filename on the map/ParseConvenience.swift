@@ -61,8 +61,8 @@ extension ParseClient {
             "X-Parse-REST-API-Key": apiKey,
             "Content-Type": "application/json"
             ]
-        let jsonBody = "{\"uniqueKey\": \"\(StudentDataModel.accountKey)\", \"firstName\": \"Hello\", \"lastName\": \"Kitty\",\"mapString\": \"\(StudentDataModel.mapString)\", \"mediaURL\": \"\(StudentDataModel.website)\",\"latitude\":\(StudentDataModel.latitude), \"longitude\": \(StudentDataModel.longitude)}"
-        
+        let jsonBody = "{\"uniqueKey\": \"\(StudentDataModel.accountKey)\", \"firstName\": \"\(StudentDataModel.firstName)\", \"lastName\": \"\(StudentDataModel.lastName)\",\"mapString\": \"\(StudentDataModel.mapString)\", \"mediaURL\": \"\(StudentDataModel.website)\",\"latitude\":\(StudentDataModel.latitude), \"longitude\": \(StudentDataModel.longitude)}"
+        print(jsonBody)
         /* 2. Make the request */
         let _ = taskForPOSTMethod(urlString: urlString, headerFields: headerFields, jsonBody: jsonBody) { (results, error) in
             
