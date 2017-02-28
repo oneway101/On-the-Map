@@ -16,7 +16,7 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
-    
+
     override func viewDidLoad() {
         populateMapView()
     }
@@ -59,6 +59,10 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
     private func presentMainView(){
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavMainView")
         self.present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelSubmitLocation(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     private func displayAlert(_ errorString: String?) {

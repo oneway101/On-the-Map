@@ -325,8 +325,19 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8Tg-hv-ydY">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Le-Df-Oju">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hBs-ge-gwu"/>
+                                    <barButtonItem title="Cancel" id="7Ih-HS-rsn">
+                                        <connections>
+                                            <action selector="cancelSubmitLocation:" destination="hgD-Vb-OF7" id="tr3-zm-qMx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ZI-GM-mXa" userLabel="submitButton">
-                                <rect key="frame" x="50" y="553" width="275" height="45"/>
+                                <rect key="frame" x="50" y="602" width="275" height="45"/>
                                 <color key="backgroundColor" red="0.2586861849" green="0.45479494329999998" blue="0.72701489929999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="7am-jF-JO2"/>
@@ -342,12 +353,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7Le-Df-Oju" firstAttribute="top" secondItem="1Wg-HV-phn" secondAttribute="bottom" constant="-20" id="46N-Ex-eXb"/>
+                            <constraint firstItem="7Le-Df-Oju" firstAttribute="leading" secondItem="z1q-md-QI8" secondAttribute="leadingMargin" constant="-16" id="6aN-Ba-Gjg"/>
                             <constraint firstItem="8Tg-hv-ydY" firstAttribute="leading" secondItem="z1q-md-QI8" secondAttribute="leading" id="DfF-eP-9EF"/>
-                            <constraint firstItem="8Tg-hv-ydY" firstAttribute="top" secondItem="z1q-md-QI8" secondAttribute="top" id="Vdg-vw-FPl"/>
                             <constraint firstItem="9ZI-GM-mXa" firstAttribute="centerX" secondItem="z1q-md-QI8" secondAttribute="centerX" id="d54-r4-s4j"/>
                             <constraint firstItem="8Tg-hv-ydY" firstAttribute="width" secondItem="z1q-md-QI8" secondAttribute="width" id="fmu-bU-2wI"/>
                             <constraint firstItem="lCB-Ac-yJT" firstAttribute="top" secondItem="9ZI-GM-mXa" secondAttribute="bottom" constant="20" id="iIP-Hl-ddb"/>
                             <constraint firstItem="8Tg-hv-ydY" firstAttribute="height" secondItem="z1q-md-QI8" secondAttribute="height" id="kfe-2A-6LY"/>
+                            <constraint firstItem="8Tg-hv-ydY" firstAttribute="top" secondItem="1Wg-HV-phn" secondAttribute="bottom" constant="-20" id="uoH-xX-0va"/>
+                            <constraint firstItem="7Le-Df-Oju" firstAttribute="width" secondItem="z1q-md-QI8" secondAttribute="width" id="vg0-MU-hzd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -357,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-t9-lfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-479" y="2185"/>
+            <point key="canvasLocation" x="-487" y="2215"/>
         </scene>
     </scenes>
     <resources>
