@@ -31,6 +31,7 @@ class UdacityClient: Client {
         static let Account = "account"
         static let Session = "session"
         static let AccountKey = "key"
+        static let Expiration = "expiration"
     }
     
     // MARK: Shared Instance

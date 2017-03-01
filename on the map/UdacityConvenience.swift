@@ -50,4 +50,39 @@ extension UdacityClient{
         }
     }
     
+    func udacityLogout(_ completionHandlerForSession: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+        
+        let urlString = Constants.SessionURL
+        let request = NSMutableURLRequest(url:URL(string:urlString)!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        /* Make the request */
+        let _ = taskForDELETEMethod(request as URLRequest) { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                print(error)
+                completionHandlerForSession(false, "There was an error loggin out.")
+            } else {
+                if let session = results?[JSONResponseKeys.Session] as? NSDictionary {
+                    if let expiration = session[JSONResponseKeys.Expiration] as? String{
+                        print("logged out: \(expiration)")
+                        completionHandlerForSession(true, nil)
+                    }
+                    
+                } else {
+                    print("Could not find \(JSONResponseKeys.AccountKey) in \(results)")
+                    completionHandlerForSession(false, "Could not find the account key.")
+                }
+            }
+        }
+    }
+    
 }

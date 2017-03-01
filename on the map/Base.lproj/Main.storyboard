@@ -114,7 +114,7 @@
         <!--Login View Controller-->
         <scene sceneID="ufK-ij-Udu">
             <objects>
-                <viewController id="gzW-0I-Owr" customClass="LoginViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="gzW-0I-Owr" customClass="LoginViewController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NyL-QZ-tFv"/>
                         <viewControllerLayoutGuide type="bottom" id="ieq-xg-44u"/>
@@ -213,7 +213,11 @@
             <objects>
                 <tabBarController storyboardIdentifier="MapTabBarController" id="GTC-97-yPj" customClass="MapTabBarController" customModule="on_the_map" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On the Map" id="enI-Lq-IP5">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="q2y-02-C0n"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="q2y-02-C0n">
+                            <connections>
+                                <action selector="logoutButton:" destination="GTC-97-yPj" id="Isg-Az-zFq"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="yqz-uD-sDq">
                                 <connections>
@@ -221,7 +225,11 @@
                                     <segue destination="20W-XM-eRA" kind="show" identifier="addLocation" id="FsI-a0-1Sn"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="MFL-ao-hDc"/>
+                            <barButtonItem systemItem="refresh" id="MFL-ao-hDc">
+                                <connections>
+                                    <action selector="refreshLocations:" destination="GTC-97-yPj" id="ha9-d2-Nq0"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="NO3-lB-RsK">
