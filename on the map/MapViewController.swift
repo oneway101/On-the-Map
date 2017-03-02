@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
     }
     
-    private func getStudentInfo(){
+    func getStudentInfo(){
         ParseClient.sharedInstance().getStudentLocation { (studentInfo, error) in
             // Q: Should I use `if let studentInfo = studentInfo as? [[String: AnyObject]]`
             if let studentInfo = studentInfo {
@@ -58,6 +58,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             // When the array is complete, we add the annotations to the map.
             self.mapView.addAnnotations(annotations)
             print("annotations added to the map view.")
+        }
+    }
+    
+    //Q: How to open a link from the mapView?
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle! {
+                app.openURL(URL(string: toOpen)!)
+            }
         }
     }
     

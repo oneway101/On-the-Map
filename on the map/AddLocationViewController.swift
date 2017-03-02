@@ -34,6 +34,7 @@ class AddLocationViewController: UIViewController {
             self.displayAlert("Must Enter a Website")
         }else{
             address = enterLocation.text!
+            StudentDataModel.mapString = enterLocation.text!
             StudentDataModel.website = enterWebsite.text!
             forwardGeocoding(address)
         }
@@ -63,7 +64,12 @@ class AddLocationViewController: UIViewController {
                 
                 StudentDataModel.latitude = coordinate.latitude
                 StudentDataModel.longitude = coordinate.longitude
-                //StudentDataModel.mapString = ("\(placemark.locality!),\(placemark.administrativeArea!)")
+                
+                //Q: How to safely unwrap mapString?
+                //If placemark does not contain locality or administrativeArea, map
+                if (placemark.locality != nil && placemark.administrativeArea != nil){
+                StudentDataModel.mapString = ("\(placemark.locality!),\(placemark.administrativeArea!)")
+                }
                 presentSubmitLocationView()
             } else {
                 displayAlert("No Matching Location Found")
@@ -81,7 +87,6 @@ class AddLocationViewController: UIViewController {
     }
     
     private func presentSubmitLocationView(){
-        //performSegue(withIdentifier: "submitLocation", sender: self)
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "submitLocationView")
         self.present(controller, animated: true, completion: nil)
     }

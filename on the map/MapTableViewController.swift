@@ -17,7 +17,7 @@ class MapTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(StudentDataModel.studentLocations.count)
+        print("number of student locations: \(StudentDataModel.studentLocations.count)")
         return StudentDataModel.studentLocations.count
     }
     
@@ -31,6 +31,14 @@ class MapTableViewController: UITableViewController {
         //print("*** cell ***")
         //print(cell)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = StudentDataModel.studentLocations[indexPath.row]
+        let url = URL(string: selectedCell.website)!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
 

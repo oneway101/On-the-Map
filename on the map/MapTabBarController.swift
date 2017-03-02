@@ -27,14 +27,8 @@ class MapTabBarController: UITabBarController, UINavigationControllerDelegate {
     }
     
     @IBAction func refreshLocations(_ sender: Any) {
-        ParseClient.sharedInstance().getStudentLocation { (studentInfo, error) in
-            if let studentInfo = studentInfo {
-                StudentDataModel.studentLocations = studentInfo
-                print("refreshed student info!")
-            }else{
-                print(error)
-            }
-        }
+        let mapViewController = self.viewControllers![0] as! MapViewController
+        mapViewController.getStudentInfo()
     }
     
     @IBAction func logoutButton(_ sender: Any) {

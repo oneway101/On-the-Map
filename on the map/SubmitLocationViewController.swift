@@ -49,6 +49,7 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
             } else {
                 if let objectId = results {
                     StudentDataModel.objectId = objectId
+                //Q: How to show this alert on the map view?
                 //self.displayAlert("Successfully posted a new location!")
                 }
             }
