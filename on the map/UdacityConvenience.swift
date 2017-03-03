@@ -19,7 +19,7 @@ extension UdacityClient{
      Step 3: Logout
      */
     
-    func udacityLogin(username: String, password: String, completionHandlerForSession: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+    func udacityLogin(username: String, password: String, _ completionHandlerForLogin: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
         //let methodParameters = [String:AnyObject]()
         let urlString = Constants.SessionURL
@@ -34,23 +34,50 @@ extension UdacityClient{
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 print(error)
-                completionHandlerForSession(false, "There was an error loggin in.")
+                completionHandlerForLogin(false, "There was an error with login.")
             } else {
                 if let account = results?[JSONResponseKeys.Account] as? NSDictionary {
                     if let accountKey = account[JSONResponseKeys.AccountKey] as? String{
                         StudentDataModel.accountKey = accountKey
-                        completionHandlerForSession(true, nil)
+                        completionHandlerForLogin(true, nil)
                     }
                     
                 } else {
                     print("Could not find \(JSONResponseKeys.AccountKey) in \(results)")
-                    completionHandlerForSession(false, "Could not find the account key.")
+                    completionHandlerForLogin(false, "Could not login.")
                 }
             }
         }
-    }
+    }//Udacity Login
     
-    func udacityLogout(_ completionHandlerForSession: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+    func getUserData(_ completionHandlerForUserData: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
+        
+        let urlString = Constants.UserURL + "/\(StudentDataModel.accountKey)"
+        let headerFields = [String:String]()
+        /* Make the request */
+        let _ = taskForGETMethod(urlString: urlString, headerFields: headerFields, client: "udacity") { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                print(error)
+                completionHandlerForUserData(false, "There was an error getting user data.")
+            } else {
+                if let user = results?[JSONResponseKeys.User] as? NSDictionary {
+                    if let userFirstName = user[JSONResponseKeys.firstName] as? String, let userLastName = user[JSONResponseKeys.lastName] as? String {
+                        StudentDataModel.firstName = userFirstName
+                        StudentDataModel.lastName = userLastName
+                        completionHandlerForUserData(true, nil)
+                    }
+                    
+                } else {
+                    print("Could not find \(JSONResponseKeys.User) in \(results)")
+                    completionHandlerForUserData(false,"Could not get the user data.")
+                }
+            }
+        }
+    }//GetUserData
+    
+    func udacityLogout(_ completionHandlerForLogout: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
         
         let urlString = Constants.SessionURL
         let request = NSMutableURLRequest(url:URL(string:urlString)!)
@@ -69,20 +96,20 @@ extension UdacityClient{
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 print(error)
-                completionHandlerForSession(false, "There was an error loggin out.")
+                completionHandlerForLogout(false, "There was an error with logout.")
             } else {
                 if let session = results?[JSONResponseKeys.Session] as? NSDictionary {
                     if let expiration = session[JSONResponseKeys.Expiration] as? String{
                         print("logged out: \(expiration)")
-                        completionHandlerForSession(true, nil)
+                        completionHandlerForLogout(true, nil)
                     }
                     
                 } else {
-                    print("Could not find \(JSONResponseKeys.AccountKey) in \(results)")
-                    completionHandlerForSession(false, "Could not find the account key.")
+                    print("Could not find \(JSONResponseKeys.Session) in \(results)")
+                    completionHandlerForLogout(false,"Could not logout.")
                 }
             }
         }
-    }
+    }//Udacity logout
     
 }

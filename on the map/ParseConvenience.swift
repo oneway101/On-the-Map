@@ -18,13 +18,12 @@ extension ParseClient {
         ]
         /* Make the request */
         let urlString = Constants.StudentLocationURL + escapedParameters(methodParameters as [String:AnyObject])
-        let request = NSMutableURLRequest(url:URL(string:urlString)!)
+        let headerFields = [
+            "X-Parse-Application-Id": parseAppID,
+            "X-Parse-REST-API-Key": apiKey
+        ]
         
-        request.httpMethod = "GET"
-        request.addValue(parseAppID, forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue(apiKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-        
-        let _ = taskForGETMethod(request as URLRequest, parameters: methodParameters as [String:AnyObject]) { (results, error) in
+        let _ = taskForGETMethod(urlString:urlString, headerFields:headerFields, client:"parse") { (results, error) in
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
@@ -45,16 +44,6 @@ extension ParseClient {
     
     func postNewLocation(_ completionHandlerForPostNew: @escaping (_ result: String?, _ error: NSError?) -> Void) {
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
-
-//        let jsonBody = [
-//            JSONResponseKeys.UniqueKey: StudentDataModel.accountKey,
-//            JSONResponseKeys.FirstName: StudentDataModel.firstName,
-//            JSONResponseKeys.LastName: StudentDataModel.lastName,
-//            JSONResponseKeys.Location: StudentDataModel.mapString,
-//            JSONResponseKeys.Website: StudentDataModel.website,
-//            JSONResponseKeys.Latitude: StudentDataModel.latitude,
-//            JSONResponseKeys.Longitude: StudentDataModel.longitude
-//        ]
         let urlString = Constants.StudentLocationURL
         let headerFields = [
             "X-Parse-Application-Id": parseAppID,

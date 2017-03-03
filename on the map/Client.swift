@@ -13,7 +13,16 @@ class Client: NSObject {
     var session = URLSession.shared
 
     // MARK: GET Method
-    func taskForGETMethod(_ request: URLRequest, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForGETMethod(urlString: String, headerFields: [String:String], client: String, _ completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        
+        /* Build the URL, Configure the request */
+        let urlString = urlString
+        let request = NSMutableURLRequest(url:URL(string:urlString)!)
+        request.httpMethod = "GET"
+        
+        for (field, value) in headerFields {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
         
         /* Make the request */
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -42,8 +51,14 @@ class Client: NSObject {
                 return
             }
             
-            /* Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            if client == "udacity" {
+                let range = Range(uncheckedBounds: (5, data.count))
+                let newData = data.subdata(in: range) /* subset response data! */
+                /* Parse the data and use the data (happens in completion handler) */
+                self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForGET)
+            } else {
+                self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            }
         }
         
         /* Start the request */

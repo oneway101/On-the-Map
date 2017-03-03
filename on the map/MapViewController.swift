@@ -53,7 +53,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotations.append(annotation)
             
         }
-        // Q: perfromUIUpdatesOnMain - shoud it include annotaions?
+        // Q: perfromUIUpdatesOnMain - should it include for loops?
         performUIUpdatesOnMain {
             // When the array is complete, we add the annotations to the map.
             self.mapView.addAnnotations(annotations)

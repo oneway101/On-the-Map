@@ -27,7 +27,7 @@ class LoginViewController: UIViewController{
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             self.displayAlert("Username or Password is empty")
         } else {
-            UdacityClient.sharedInstance().udacityLogin(username: usernameTextField.text!, password: passwordTextField.text!, completionHandlerForSession: { (success, errorString) in
+            UdacityClient.sharedInstance().udacityLogin(username: usernameTextField.text!, password: passwordTextField.text!) { (success, errorString) in
                 
                 performUIUpdatesOnMain {
                     if success{
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController{
                     }
                 }
                 
-            })
+            }
         }
     }
     
@@ -49,7 +49,6 @@ class LoginViewController: UIViewController{
         performUIUpdatesOnMain {
             let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavMainView")
             self.present(controller, animated: true, completion: nil)
-            
         }
     }
     

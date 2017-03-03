@@ -22,8 +22,9 @@ class AddLocationViewController: UIViewController {
     var website = ""
     
     override func viewDidLoad() {
-        enterLocation.text = "New York"
-        enterWebsite.text = "http://www.udacity.com"
+        //enterLocation.text = "New York"
+        //enterWebsite.text = "http://www.udacity.com"
+        getUserName()
     }
     
     //Found location button
@@ -66,7 +67,6 @@ class AddLocationViewController: UIViewController {
                 StudentDataModel.longitude = coordinate.longitude
                 
                 //Q: How to safely unwrap mapString?
-                //If placemark does not contain locality or administrativeArea, map
                 if (placemark.locality != nil && placemark.administrativeArea != nil){
                 StudentDataModel.mapString = ("\(placemark.locality!),\(placemark.administrativeArea!)")
                 }
@@ -76,6 +76,16 @@ class AddLocationViewController: UIViewController {
             }
         }
         
+    }
+    
+    func getUserName(){
+        UdacityClient.sharedInstance().getUserData { (success, error) in
+            guard (error == nil) else{
+                self.displayAlert("Could not get a public user name.")
+                print(error)
+                return
+            }
+        }
     }
     
     private func displayAlert(_ errorString: String?) {
