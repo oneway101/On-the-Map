@@ -84,9 +84,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //Q: How to open a link from the mapView?
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
+            
+            let urlString = view.annotation?.subtitle!
+            print("mapView urlString:\(urlString)")
+            let url = URL(string: urlString!)!
             let app = UIApplication.shared
-            let url = URL(string: (view.annotation?.subtitle)!)!
-            if let url = view.annotation?.subtitle!, app.canOpenURL(URL(string:url)) {
+
+            if app.canOpenURL(url) {
                 app.open(url, options: [:], completionHandler: nil)
             }else{
                 self.displayAlert("Selected web link could not be opened.")
