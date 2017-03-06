@@ -38,6 +38,16 @@ class MapTableViewController: UITableViewController {
         let url = URL(string: selectedCell.website)!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }else{
+            self.displayAlert("Selected web link could not be opened.")
+        }
+    }
+    
+    func displayAlert(_ errorString: String?) {
+        if let errorString = errorString {
+            let alert = UIAlertController(title: "Website not valid", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

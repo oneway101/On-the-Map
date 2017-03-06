@@ -23,6 +23,7 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
 
     
     private func populateMapView(){
+        
         var annotations = [MKPointAnnotation]()
         let lat = CLLocationDegrees(StudentDataModel.latitude)
         let lon = CLLocationDegrees(StudentDataModel.longitude)
@@ -33,8 +34,13 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
         annotation.subtitle = StudentDataModel.website
         annotations.append(annotation)
         
+        //zoom into an appropriate region
+        let span = MKCoordinateSpanMake(1, 1)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        
         performUIUpdatesOnMain {
             self.mapView.addAnnotations(annotations)
+            self.mapView.setRegion(region, animated: true)
             print("new location added to the map view.")
         }
     }

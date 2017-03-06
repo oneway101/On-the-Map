@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController{
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var worldMapImage: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -17,7 +17,55 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var debugTextLabel: UILabel!
     
     override func viewDidLoad() {
+        self.usernameTextField.delegate = self
+        self.passwordTextField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(_ notification:Notification) {
+        
+        view.frame.origin.y = -(getKeyboardHeight(notification))
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func keyboardWillHide(_ notification:Notification) {
+        
+        view.frame.origin.y = 0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        //textField.resignFirstResponder()
+        return true;
     }
     
     // MARK: Login

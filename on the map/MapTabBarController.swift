@@ -34,8 +34,7 @@ class MapTabBarController: UITabBarController, UINavigationControllerDelegate {
     @IBAction func logoutButton(_ sender: Any) {
         UdacityClient.sharedInstance().udacityLogout { (success, errorString) in
             if success {
-                let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginView")
-                self.present(controller, animated: true, completion: nil)
+                self.dismiss(animated:true,completion:nil)
             }else{
                 print(errorString)
             }

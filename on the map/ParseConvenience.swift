@@ -14,8 +14,9 @@ extension ParseClient {
     
     func getStudentLocation(_ completionHandlerForStudentLocation: @escaping (_ result: [StudentInformations]?, _ error: NSError?) -> Void) {
         let methodParameters = [
-            ParameterKeys.Limit : 100
-        ]
+            ParameterKeys.Limit : 100,
+            ParameterKeys.Order : "-updatedAt"
+        ] as [String : Any]
         /* Make the request */
         let urlString = Constants.StudentLocationURL + escapedParameters(methodParameters as [String:AnyObject])
         let headerFields = [

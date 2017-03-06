@@ -11,7 +11,7 @@ import CoreLocation
 import AddressBookUI
 
 
-class AddLocationViewController: UIViewController {
+class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var enterLocation: UITextField!
     @IBOutlet weak var enterWebsite: UITextField!
@@ -24,7 +24,56 @@ class AddLocationViewController: UIViewController {
     override func viewDidLoad() {
         //enterLocation.text = "New York"
         //enterWebsite.text = "http://www.udacity.com"
+        self.enterLocation.delegate = self
+        self.enterWebsite.delegate = self
         getUserName()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(_ notification:Notification) {
+        
+        view.frame.origin.y = -(getKeyboardHeight(notification))
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func keyboardWillHide(_ notification:Notification) {
+        
+        view.frame.origin.y = 0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        //textField.resignFirstResponder()
+        return true;
     }
     
     //Found location button
@@ -66,7 +115,6 @@ class AddLocationViewController: UIViewController {
                 StudentDataModel.latitude = coordinate.latitude
                 StudentDataModel.longitude = coordinate.longitude
                 
-                //Q: How to safely unwrap mapString?
                 if (placemark.locality != nil && placemark.administrativeArea != nil){
                 StudentDataModel.mapString = ("\(placemark.locality!),\(placemark.administrativeArea!)")
                 }

@@ -31,6 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.populateMapView()
             }else{
                 print(error)
+                self.displayAlert("Could not get student locations.")
             }
         }
     }
@@ -53,7 +54,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotations.append(annotation)
             
         }
-        // Q: perfromUIUpdatesOnMain - should it include for loops?
+
         performUIUpdatesOnMain {
             // When the array is complete, we add the annotations to the map.
             self.mapView.addAnnotations(annotations)
@@ -61,13 +62,43 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
     //Q: How to open a link from the mapView?
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                app.openURL(URL(string: toOpen)!)
+            let url = URL(string: (view.annotation?.subtitle)!)!
+            if let url = view.annotation?.subtitle!, app.canOpenURL(URL(string:url)) {
+                app.open(url, options: [:], completionHandler: nil)
+            }else{
+                self.displayAlert("Selected web link could not be opened.")
             }
+        }
+    }
+    
+    func displayAlert(_ errorString: String?) {
+        if let errorString = errorString {
+            let alert = UIAlertController(title: "Map View", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
