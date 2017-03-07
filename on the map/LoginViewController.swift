@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIApplication.shared.beginIgnoringInteractionEvents()
         
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
-            self.displayAlert("Username or Password is empty")
+            displayAlert(title: "Login Failed", message: "Username or Password is empty")
         } else {
             UdacityClient.sharedInstance().udacityLogin(username: usernameTextField.text!, password: passwordTextField.text!) { (success, errorString) in
                 performUIUpdatesOnMain {
@@ -93,10 +93,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         self.completeLogin()
                         print("successfully logged in!")
                     }else if errorString != nil {
-                        self.displayAlert(errorString)
+                        self.displayAlert(title: "Login Failed", message: errorString)
                     }
                     else{
-                        self.displayAlert("Invalid Username or Password")
+                        self.displayAlert(title: "Login Failed", message: "Invalid Username or Password")
                     }
                 }
                 
@@ -111,12 +111,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func displayAlert(_ errorString: String?) {
-        if let errorString = errorString {
-            let alert = UIAlertController(title: "Login Failed", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+//    func displayAlert(_ errorString: String?) {
+//        if let errorString = errorString {
+//            let alert = UIAlertController(title: "Login Failed", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//    }
     
 }

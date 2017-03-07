@@ -33,8 +33,8 @@ extension UdacityClient{
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
-                print(error)
-                completionHandlerForLogin(false,error.localizedDescription)
+                print(error.localizedDescription)
+                completionHandlerForLogin(false, error.localizedDescription)
             } else {
                 if let account = results?[JSONResponseKeys.Account] as? NSDictionary {
                     if let accountKey = account[JSONResponseKeys.AccountKey] as? String{
@@ -59,7 +59,7 @@ extension UdacityClient{
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
-                print(error)
+                print(error.localizedDescription)
                 completionHandlerForUserData(false, "There was an error getting user data.")
             } else {
                 if let user = results?[JSONResponseKeys.User] as? NSDictionary {
@@ -95,7 +95,7 @@ extension UdacityClient{
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
-                print(error)
+                print(error.localizedDescription)
                 completionHandlerForLogout(false, "There was an error with logout.")
             } else {
                 if let session = results?[JSONResponseKeys.Session] as? NSDictionary {

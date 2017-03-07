@@ -80,9 +80,9 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     //Find location button
     @IBAction func findLocation(_ sender: Any) {
         if enterLocation.text!.isEmpty{
-            self.displayAlert("Must Enter a Location")
+            displayAlert(title: "Location empty", message: "Must Enter a Location")
         }else if enterWebsite.text!.isEmpty{
-            self.displayAlert("Must Enter a Website")
+            displayAlert(title: "Website empty", message: "Must Enter a Website")
         }else{
             address = enterLocation.text!
             StudentDataModel.mapString = enterLocation.text!
@@ -110,7 +110,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         
         guard (error == nil) else {
             print("Unable to Forward Geocode Address (\(error))")
-            displayAlert("Unable to Forward Geocode Address")
+            displayAlert(title: "Geocode Error", message: "Unable to Forward Geocode Address")
             return
         }
         
@@ -129,33 +129,33 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
                 }
                 presentSubmitLocationView()
             } else {
-                displayAlert("No Matching Location Found")
+                displayAlert(title: "User Data", message: "No Matching Location Found")
             }
         }
         
     }
     
     func getUserName(){
-        UdacityClient.sharedInstance().getUserData { (success, error) in
-            guard (error == nil) else{
-                self.displayAlert("Could not get a public user name.")
-                print(error)
+        UdacityClient.sharedInstance().getUserData { (success, errorString) in
+            guard (errorString == nil) else{
+                print(errorString)
+                self.displayAlert(title: "User Data", message: errorString)
                 return
             }
         }
     }
     
-    private func displayAlert(_ errorString: String?) {
-        
-        activityIndicator.stopAnimating()
-        UIApplication.shared.endIgnoringInteractionEvents()
-        
-        if let errorString = errorString {
-            let alert = UIAlertController(title: "Location Not Found", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+//    private func displayAlert(_ errorString: String?) {
+//        
+//        activityIndicator.stopAnimating()
+//        UIApplication.shared.endIgnoringInteractionEvents()
+//        
+//        if let errorString = errorString {
+//            let alert = UIAlertController(title: "Location Not Found", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//    }
     
     private func presentSubmitLocationView(){
         

@@ -31,7 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.populateMapView()
             }else{
                 print(error)
-                self.displayAlert("Could not get student locations.")
+                self.displayAlert(title: "Invalid Link", message: "Could not get student locations.")
             }
         }
     }
@@ -84,25 +84,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             
-            let urlString = view.annotation?.subtitle!
-            print("mapView urlString:\(urlString)")
-            let url = URL(string: urlString!)!
             let app = UIApplication.shared
-            
-            if app.canOpenURL(url) {
-                app.open(url, options: [:], completionHandler: nil)
-            }else{
-                self.displayAlert("Selected web link could not be opened.")
+            if let annotation = view.annotation, let urlString = annotation.subtitle {
+                let url = URL(string: urlString!)
+                if app.canOpenURL(url) {
+                    app.open(url, options: [:], completionHandler: nil)
+                }else{
+                    displayAlert(title: "Invalid Link", message: "Selected web link could not be opened.")
+                }
             }
+
+            
+            
         }
     }
     
-    func displayAlert(_ errorString: String?) {
-        if let errorString = errorString {
-            let alert = UIAlertController(title: "Map View", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+//    func displayAlert(_ errorString: String?) {
+//        if let errorString = errorString {
+//            let alert = UIAlertController(title: "Map View", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//    }
     
 }

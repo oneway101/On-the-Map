@@ -49,8 +49,9 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
     @IBAction func submitLocation(_ sender: Any) {
         ParseClient.sharedInstance().postNewLocation { (results, error) in
             
-            if error != nil {
-                self.displayAlert("Could not complete your request")
+            if (error != nil) {
+                self.dismiss(animated: true, completion: nil)
+                self.displayAlert(title: "Submission Error", message: "Could not complete your request")
                 print(error)
             } else {
                 if let objectId = results {
@@ -58,7 +59,6 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
                 }
             }
         }
-        self.presentMainView()
     }
     
     private func presentMainView(){
@@ -70,13 +70,13 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
         dismiss(animated: true, completion: nil)
     }
     
-    private func displayAlert(_ errorString: String?) {
-        if let errorString = errorString {
-            let alert = UIAlertController(title: "Submit Location", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
+//    private func displayAlert(_ errorString: String?) {
+//        if let errorString = errorString {
+//            let alert = UIAlertController(title: "Submit Location", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
+//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//    }
     
     
     
