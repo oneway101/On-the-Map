@@ -16,6 +16,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
+        mapView.delegate = self
         getStudentInfo()
     }
     
@@ -25,7 +26,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func getStudentInfo(){
         ParseClient.sharedInstance().getStudentLocation { (studentInfo, error) in
-            // Q: Should I use `if let studentInfo = studentInfo as? [[String: AnyObject]]`
             if let studentInfo = studentInfo {
                 StudentDataModel.studentLocations = studentInfo
                 self.populateMapView()
@@ -81,7 +81,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
-    //Q: How to open a link from the mapView?
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             
@@ -89,7 +88,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             print("mapView urlString:\(urlString)")
             let url = URL(string: urlString!)!
             let app = UIApplication.shared
-
+            
             if app.canOpenURL(url) {
                 app.open(url, options: [:], completionHandler: nil)
             }else{

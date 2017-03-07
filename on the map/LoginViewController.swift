@@ -16,6 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: CustomButton!
     @IBOutlet weak var debugTextLabel: UILabel!
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
@@ -72,12 +74,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginPressed(_ sender: AnyObject) {
         
+        // Activity Indicator
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.activityIndicatorViewStyle = .gray
+        view.addSubview(activityIndicator)
+        self.activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
         if usernameTextField.text!.isEmpty || passwordTextField.text!.isEmpty {
             self.displayAlert("Username or Password is empty")
         } else {
             UdacityClient.sharedInstance().udacityLogin(username: usernameTextField.text!, password: passwordTextField.text!) { (success, errorString) in
-                
                 performUIUpdatesOnMain {
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     if success{
                         self.completeLogin()
                         print("successfully logged in!")

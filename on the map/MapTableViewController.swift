@@ -41,6 +41,7 @@ class MapTableViewController: UITableViewController {
         }else{
             self.displayAlert("Selected web link could not be opened.")
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func displayAlert(_ errorString: String?) {

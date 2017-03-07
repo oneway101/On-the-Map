@@ -55,9 +55,6 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
             } else {
                 if let objectId = results {
                     StudentDataModel.objectId = objectId
-                //Q: How to show this alert on the map view? or
-                //Q: Can I create one displayAlert function to be used in different classes?
-                //self.displayAlert("Successfully posted a new location!")
                 }
             }
         }

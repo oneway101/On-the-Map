@@ -20,6 +20,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
     var address = ""
     var website = ""
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         //enterLocation.text = "New York"
@@ -76,7 +77,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
     
-    //Found location button
+    //Find location button
     @IBAction func findLocation(_ sender: Any) {
         if enterLocation.text!.isEmpty{
             self.displayAlert("Must Enter a Location")
@@ -92,6 +93,14 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     // Geocode Address String
     func forwardGeocoding(_ address: String) {
+        // Activity Indicator
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.activityIndicatorViewStyle = .gray
+        view.addSubview(activityIndicator)
+        self.activityIndicator.startAnimating()
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
         CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
             self.processResponse(withPlacemarks: placemarks, error: error)
         }
@@ -137,6 +146,10 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func displayAlert(_ errorString: String?) {
+        
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+        
         if let errorString = errorString {
             let alert = UIAlertController(title: "Location Not Found", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
@@ -145,6 +158,10 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func presentSubmitLocationView(){
+        
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+        
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "submitLocationView")
         self.present(controller, animated: true, completion: nil)
     }
