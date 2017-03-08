@@ -86,11 +86,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             let app = UIApplication.shared
             if let annotation = view.annotation, let urlString = annotation.subtitle {
-                let url = URL(string: urlString!)
-                if app.canOpenURL(url) {
-                    app.open(url, options: [:], completionHandler: nil)
+                if let url = URL(string: urlString!) {
+                    if app.canOpenURL(url) {
+                        app.open(url, options: [:], completionHandler: nil)
+                    }else{
+                        displayAlert(title: "Invalid Link", message: "Selected web link could not be opened.")
+                    }
                 }else{
-                    displayAlert(title: "Invalid Link", message: "Selected web link could not be opened.")
+                    displayAlert(title: "Invalid Link", message: "Not a valid web link.")
                 }
             }
 

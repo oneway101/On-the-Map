@@ -35,11 +35,14 @@ class MapTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCell = StudentDataModel.studentLocations[indexPath.row]
-        let url = URL(string: selectedCell.website)!
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        if let url = URL(string: selectedCell.website) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }else{
+                displayAlert(title: "Invalid Link", message: "Selected web link could not be opened.")
+            }
         }else{
-            displayAlert(title: "Invalid Link", message: "Selected web link could not be opened.")
+            displayAlert(title: "Invalid Link", message: "Not a valid web link.")
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
