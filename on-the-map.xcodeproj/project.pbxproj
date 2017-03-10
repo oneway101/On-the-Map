@@ -71,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				846F457E1E575FEB0050A381 /* Client.swift */,
-				8477A9511E6F4700009450CC /* Helpers.swift */,
 				8459B25B1E5E095D00C219F5 /* StudentDataModel.swift */,
 				844F5C1D1E4E37390074E2B1 /* StudentInformations.swift */,
 				846B16851E54D919004935C9 /* GCDBlackBox.swift */,
@@ -84,6 +83,7 @@
 		844F5C0E1E4E13B20074E2B1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8477A9511E6F4700009450CC /* Helpers.swift */,
 				847795CA1E4D68AA00012584 /* LoginViewController.swift */,
 				8477305D1E5B4995004AD68A /* MapTabBarController.swift */,
 				844F5C191E4E18390074E2B1 /* MapViewController.swift */,

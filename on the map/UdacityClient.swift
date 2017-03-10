@@ -10,9 +10,6 @@ import Foundation
 
 class UdacityClient: Client {
     
-    // MARK: Properties
-    static var accountKey: String? = nil
-    
     // MARK: Constants
     struct Constants {
         static let SessionURL = "https://www.udacity.com/api/session"

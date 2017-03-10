@@ -39,21 +39,16 @@ class MapTableViewController: UITableViewController {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }else{
-                displayAlert(title: "Invalid Link", message: "Selected web link could not be opened.")
+                performUIUpdatesOnMain {
+                    self.displayAlert(title: "Invalid Link", message: "Selected web link could not be opened.")
+                }
             }
         }else{
-            displayAlert(title: "Invalid Link", message: "Not a valid web link.")
+            performUIUpdatesOnMain {
+                self.displayAlert(title: "Invalid Link", message: "Not a valid web link.")
+            }
         }
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-//    func displayAlert(_ errorString: String?) {
-//        if let errorString = errorString {
-//            let alert = UIAlertController(title: "Website not valid", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-//        }
-//    }
-    
+    }    
 
 }

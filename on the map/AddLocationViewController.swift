@@ -23,11 +23,11 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
-        //enterLocation.text = "New York"
-        //enterWebsite.text = "http://www.udacity.com"
+        enterLocation.text = "New York"
+        enterWebsite.text = "http://www.udacity.com"
         self.enterLocation.delegate = self
         self.enterWebsite.delegate = self
-        getUserName()
+        //getUserName()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,14 +93,10 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     // Geocode Address String
     func forwardGeocoding(_ address: String) {
-        // Activity Indicator
-        self.activityIndicator.center = self.view.center
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.activityIndicatorViewStyle = .gray
-        view.addSubview(activityIndicator)
-        self.activityIndicator.startAnimating()
         
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        //Show Activity Indicator
+        showActivityIndicator(activityIndicator)
+        
         CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
             self.processResponse(withPlacemarks: placemarks, error: error)
         }
@@ -138,29 +134,18 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     func getUserName(){
         UdacityClient.sharedInstance().getUserData { (success, errorString) in
             guard (errorString == nil) else{
-                print(errorString)
-                self.displayAlert(title: "User Data", message: errorString)
+                performUIUpdatesOnMain {
+                    self.displayAlert(title: "User Data", message: errorString)
+                }
                 return
             }
         }
     }
     
-//    private func displayAlert(_ errorString: String?) {
-//        
-//        activityIndicator.stopAnimating()
-//        UIApplication.shared.endIgnoringInteractionEvents()
-//        
-//        if let errorString = errorString {
-//            let alert = UIAlertController(title: "Location Not Found", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-//        }
-//    }
-    
     private func presentSubmitLocationView(){
-        
-        activityIndicator.stopAnimating()
-        UIApplication.shared.endIgnoringInteractionEvents()
+
+        //Hide Activity Indicator
+        self.hideActivityIndicator(self.activityIndicator)
         
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "submitLocationView")
         self.present(controller, animated: true, completion: nil)

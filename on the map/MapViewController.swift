@@ -11,8 +11,6 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    var studentInfoDictionary = [StudentInformations]()
-    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -28,10 +26,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ParseClient.sharedInstance().getStudentLocation { (studentInfo, error) in
             if let studentInfo = studentInfo {
                 StudentDataModel.studentLocations = studentInfo
-                self.populateMapView()
+                performUIUpdatesOnMain {
+                    self.populateMapView()
+                }
             }else{
+                performUIUpdatesOnMain {
+                    self.displayAlert(title: "Invalid Link", message: "Could not get student locations.")
+                }
                 print(error)
-                self.displayAlert(title: "Invalid Link", message: "Could not get student locations.")
             }
         }
     }
@@ -54,12 +56,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotations.append(annotation)
             
         }
-
-        performUIUpdatesOnMain {
-            // When the array is complete, we add the annotations to the map.
-            self.mapView.addAnnotations(annotations)
-            print("annotations added to the map view.")
-        }
+        // When the array is complete, we add the annotations to the map.
+        self.mapView.addAnnotations(annotations)
+        print("annotations added to the map view.")
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -101,13 +100,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
         }
     }
-    
-//    func displayAlert(_ errorString: String?) {
-//        if let errorString = errorString {
-//            let alert = UIAlertController(title: "Map View", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-//        }
-//    }
     
 }

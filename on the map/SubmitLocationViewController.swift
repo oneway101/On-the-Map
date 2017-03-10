@@ -51,34 +51,37 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
             
             if (error != nil) {
                 self.dismiss(animated: true, completion: nil)
-                self.displayAlert(title: "Submission Error", message: "Could not complete your request")
+                performUIUpdatesOnMain {
+                    self.displayAlert(title: "Submission Error", message: "Could not complete your request")
+                }
                 print(error)
             } else {
                 if let objectId = results {
                     StudentDataModel.objectId = objectId
+                    self.presentMainView()
+                    
                 }
             }
         }
     }
     
     private func presentMainView(){
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavMainView")
-        self.present(controller, animated: true, completion: nil)
+    
+        //self.dismiss(animated: false, completion: nil)
+        
+        performUIUpdatesOnMain {
+            // Q: How to show MapView programmatically without using segue? When presenting an existing MapView viewController, Should submitLocation View Controller be dismissed?
+            self.performSegue(withIdentifier: "showMapView", sender: self)
+            
+            // TODO: Use the completion handelr from alert to present the MapView?
+            self.displayAlert(title: "New location Added", message: "Successfully submitted a new location")
+
+        }
     }
     
     @IBAction func cancelSubmitLocation(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-//    private func displayAlert(_ errorString: String?) {
-//        if let errorString = errorString {
-//            let alert = UIAlertController(title: "Submit Location", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-//        }
-//    }
-    
-    
     
 }
 

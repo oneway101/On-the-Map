@@ -378,11 +378,12 @@
                     <connections>
                         <outlet property="mapView" destination="8Tg-hv-ydY" id="cPE-Fm-sdD"/>
                         <outlet property="submitButton" destination="9ZI-GM-mXa" id="eHz-D3-0NA"/>
+                        <segue destination="f1r-PL-9Ww" kind="show" identifier="showMapView" id="c5x-GQ-Lqq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-t9-lfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-487" y="2215"/>
+            <point key="canvasLocation" x="-1306" y="1462"/>
         </scene>
     </scenes>
     <resources>
