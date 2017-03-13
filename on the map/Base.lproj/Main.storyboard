@@ -312,6 +312,7 @@
                         <outlet property="enterLocation" destination="EaL-sb-MM6" id="Sw0-D6-Gvn"/>
                         <outlet property="enterWebsite" destination="9Av-RC-xd0" id="Ehn-RS-6Yz"/>
                         <outlet property="findLocation" destination="SWb-TS-LbI" id="UlR-eO-se5"/>
+                        <segue destination="hgD-Vb-OF7" kind="presentation" identifier="submitLocation" id="kAT-eJ-LYb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w58-UI-XUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -378,12 +379,12 @@
                     <connections>
                         <outlet property="mapView" destination="8Tg-hv-ydY" id="cPE-Fm-sdD"/>
                         <outlet property="submitButton" destination="9ZI-GM-mXa" id="eHz-D3-0NA"/>
-                        <segue destination="f1r-PL-9Ww" kind="show" identifier="showMapView" id="c5x-GQ-Lqq"/>
+                        <segue destination="f1r-PL-9Ww" kind="show" identifier="showMapView" id="tub-n4-o4S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-t9-lfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1306" y="1462"/>
+            <point key="canvasLocation" x="-1306" y="1497"/>
         </scene>
     </scenes>
     <resources>

@@ -59,23 +59,19 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
                 if let objectId = results {
                     StudentDataModel.objectId = objectId
                     self.presentMainView()
-                    
                 }
             }
         }
     }
     
     private func presentMainView(){
-    
-        //self.dismiss(animated: false, completion: nil)
         
         performUIUpdatesOnMain {
-            // Q: How to show MapView programmatically without using segue? When presenting an existing MapView viewController, Should submitLocation View Controller be dismissed?
-            self.performSegue(withIdentifier: "showMapView", sender: self)
-            
-            // TODO: Use the completion handelr from alert to present the MapView?
-            self.displayAlert(title: "New location Added", message: "Successfully submitted a new location")
-
+            let alert = UIAlertController(title: "New location Added", message: "Successfully submitted a new location!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+                (action) -> Void in self.performSegue(withIdentifier: "showMapView", sender: self)
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
