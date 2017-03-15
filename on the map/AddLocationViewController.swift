@@ -147,8 +147,6 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         //Hide Activity Indicator
         self.hideActivityIndicator(self.activityIndicator)
         
-        //let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "submitLocationView")
-        //self.present(controller, animated: true, completion: nil)
         performSegue(withIdentifier: "submitLocation", sender: self)
     }
     

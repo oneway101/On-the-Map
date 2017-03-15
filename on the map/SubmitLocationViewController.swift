@@ -69,7 +69,8 @@ class submitLocationViewController: UIViewController, MKMapViewDelegate{
         performUIUpdatesOnMain {
             let alert = UIAlertController(title: "New location Added", message: "Successfully submitted a new location!", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
-                (action) -> Void in self.performSegue(withIdentifier: "showMapView", sender: self)
+                (action) -> Void in
+                self.performSegue(withIdentifier: "unwindMapView", sender: self)
             }))
             self.present(alert, animated: true, completion: nil)
         }

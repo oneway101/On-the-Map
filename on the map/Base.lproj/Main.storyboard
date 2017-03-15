@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UtL-cl-HsJ" id="KLl-iB-mFi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="xjA-f5-tIH">
@@ -222,7 +222,7 @@
                             <barButtonItem systemItem="add" id="yqz-uD-sDq">
                                 <connections>
                                     <action selector="addLocation:" destination="GTC-97-yPj" id="phW-WS-Pja"/>
-                                    <segue destination="20W-XM-eRA" kind="show" identifier="addLocation" id="FsI-a0-1Sn"/>
+                                    <segue destination="20W-XM-eRA" kind="presentation" identifier="addLocation" id="FsI-a0-1Sn"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="refresh" id="MFL-ao-hDc">
@@ -312,12 +312,12 @@
                         <outlet property="enterLocation" destination="EaL-sb-MM6" id="Sw0-D6-Gvn"/>
                         <outlet property="enterWebsite" destination="9Av-RC-xd0" id="Ehn-RS-6Yz"/>
                         <outlet property="findLocation" destination="SWb-TS-LbI" id="UlR-eO-se5"/>
-                        <segue destination="hgD-Vb-OF7" kind="presentation" identifier="submitLocation" id="kAT-eJ-LYb"/>
+                        <segue destination="hgD-Vb-OF7" kind="show" identifier="submitLocation" id="kAT-eJ-LYb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w58-UI-XUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-479" y="1463"/>
+            <point key="canvasLocation" x="-479" y="1438"/>
         </scene>
         <!--Submit Location View Controller-->
         <scene sceneID="dqT-sJ-Ei4">
@@ -379,12 +379,13 @@
                     <connections>
                         <outlet property="mapView" destination="8Tg-hv-ydY" id="cPE-Fm-sdD"/>
                         <outlet property="submitButton" destination="9ZI-GM-mXa" id="eHz-D3-0NA"/>
-                        <segue destination="f1r-PL-9Ww" kind="show" identifier="showMapView" id="tub-n4-o4S"/>
+                        <segue destination="uEN-1H-WZy" kind="unwind" identifier="unwindMapView" unwindAction="unwindMapViewWithSegue:" id="s5e-ao-G3W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-t9-lfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="uEN-1H-WZy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1306" y="1497"/>
+            <point key="canvasLocation" x="-479" y="2201"/>
         </scene>
     </scenes>
     <resources>

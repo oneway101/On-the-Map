@@ -43,4 +43,6 @@ class MapTabBarController: UITabBarController, UINavigationControllerDelegate {
         }
     }
     
+    @IBAction func unwindMapView(segue: UIStoryboardSegue) {}
+    
 }

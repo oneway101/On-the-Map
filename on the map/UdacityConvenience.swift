@@ -33,7 +33,7 @@ extension UdacityClient{
             
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
-                print(error.localizedDescription)
+                //print(error.localizedDescription)
                 completionHandlerForLogin(false, error.localizedDescription)
             } else {
                 if let account = results?[JSONResponseKeys.Account] as? NSDictionary {
@@ -44,7 +44,8 @@ extension UdacityClient{
                     
                 } else {
                     print("Could not find \(JSONResponseKeys.AccountKey) in \(results)")
-                    completionHandlerForLogin(false, "Could not login.")
+                    completionHandlerForLogin(false, "Invalid Credentials")
+                    
                 }
             }
         }

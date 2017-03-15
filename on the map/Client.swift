@@ -86,20 +86,31 @@ class Client: NSObject {
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
             func sendError(_ error: String) {
-                print(error)
+                //print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandlerForPOST(nil, NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
             }
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+                sendError("There was an error with your request: \(error!.localizedDescription)")
                 return
             }
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                
+                // MARK: Check for login credentials.
+                if let data = data {
+                    if urlString == UdacityClient.Constants.SessionURL {
+                        let range = Range(uncheckedBounds: (5, data.count))
+                        let newData = data.subdata(in: range) /* subset response data! */
+                        /* Parse the data and use the data (happens in completion handler) */
+                        self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)
+                    }
+                } else {
                 sendError("Your request returned a status code other than 2xx!")
+                }
                 return
             }
             
