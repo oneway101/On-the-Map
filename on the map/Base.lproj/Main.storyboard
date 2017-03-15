@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UtL-cl-HsJ" id="KLl-iB-mFi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="xjA-f5-tIH">
@@ -258,6 +258,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCH-X6-WTT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="8hH-So-JUe"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="O07-a2-xin"/>
+                                    <barButtonItem title="Cancel" id="3uW-qy-YwB">
+                                        <connections>
+                                            <action selector="cancelAddLocation:" destination="20W-XM-eRA" id="qxs-sN-YQf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="vgj-fV-MCe">
                                 <rect key="frame" x="50" y="198.5" width="275" height="271"/>
                                 <subviews>
@@ -304,7 +318,10 @@
                         <constraints>
                             <constraint firstItem="vgj-fV-MCe" firstAttribute="centerX" secondItem="h3X-7r-OT9" secondAttribute="centerX" id="KOk-s5-vnt"/>
                             <constraint firstAttribute="trailing" secondItem="vgj-fV-MCe" secondAttribute="trailing" constant="50" id="RlZ-I3-3hF"/>
+                            <constraint firstItem="TCH-X6-WTT" firstAttribute="top" secondItem="e0D-LA-4bY" secondAttribute="bottom" constant="-20" id="XSb-kg-VoF"/>
+                            <constraint firstItem="TCH-X6-WTT" firstAttribute="leading" secondItem="h3X-7r-OT9" secondAttribute="leadingMargin" constant="-16" id="aF8-Zn-89X"/>
                             <constraint firstItem="vgj-fV-MCe" firstAttribute="leading" secondItem="h3X-7r-OT9" secondAttribute="leading" constant="50" id="toy-va-BsQ"/>
+                            <constraint firstItem="TCH-X6-WTT" firstAttribute="width" secondItem="h3X-7r-OT9" secondAttribute="width" id="vGi-vT-GLY"/>
                             <constraint firstItem="vgj-fV-MCe" firstAttribute="centerY" secondItem="h3X-7r-OT9" secondAttribute="centerY" id="zrr-TR-3iZ"/>
                         </constraints>
                     </view>
@@ -379,7 +396,7 @@
                     <connections>
                         <outlet property="mapView" destination="8Tg-hv-ydY" id="cPE-Fm-sdD"/>
                         <outlet property="submitButton" destination="9ZI-GM-mXa" id="eHz-D3-0NA"/>
-                        <segue destination="uEN-1H-WZy" kind="unwind" identifier="unwindMapView" unwindAction="unwindMapViewWithSegue:" id="s5e-ao-G3W"/>
+                        <segue destination="uEN-1H-WZy" kind="unwind" identifier="unwindMapView" animates="NO" unwindAction="unwindMapViewWithSegue:" id="s5e-ao-G3W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6Y-t9-lfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -23,11 +23,11 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
-        enterLocation.text = "New York"
-        enterWebsite.text = "http://www.udacity.com"
+        //enterLocation.text = "New York"
+        //enterWebsite.text = "http://www.udacity.com"
         self.enterLocation.delegate = self
         self.enterWebsite.delegate = self
-        //getUserName()
+        getUserName()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,6 +148,11 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         self.hideActivityIndicator(self.activityIndicator)
         
         performSegue(withIdentifier: "submitLocation", sender: self)
+    }
+    
+    
+    @IBAction func cancelAddLocation(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 }
